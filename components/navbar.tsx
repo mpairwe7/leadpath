@@ -47,7 +47,7 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-8">
             {links.map((link) => (
               <Link
-                key={link.href}
+                key={`desktop-${link.href}`}
                 href={link.href}
                 className="text-sm font-medium text-foreground hover:text-primary transition-colors"
               >
@@ -88,7 +88,7 @@ export function Navbar() {
           <div className="px-4 py-4 space-y-2">
             {links.map((link) => (
               <Link
-                key={link.href}
+                key={`mobile-${link.href}`}
                 href={link.href}
                 className="block px-3 py-2 text-sm font-medium text-foreground hover:bg-muted rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
