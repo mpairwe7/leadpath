@@ -1,0 +1,8 @@
+{
+  "buildCommand": "next build",
+  "outputDirectory": ".next",
+  "installCommand": "pnpm install",
+  "devCommand": "next dev",
+  "regions": ["iad1"],
+  "crons": []
+}
