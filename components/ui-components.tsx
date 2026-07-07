@@ -130,7 +130,7 @@ export function Heading({
   children,
   subtitle,
 }: HeadingProps) {
-  const baseClasses = 'font-serif font-bold text-balance text-foreground dark:text-white transition-colors'
+  const baseClasses = 'font-serif font-bold text-balance text-primary dark:text-white transition-colors'
 
   const sizeClasses = {
     1: 'text-4xl md:text-5xl lg:text-6xl',
@@ -151,7 +151,7 @@ export function Heading({
         {children}
       </HeadingTag>
       {subtitle && (
-        <p className="text-lg md:text-xl text-muted-foreground dark:text-slate-400 mt-4">
+        <p className="text-lg md:text-xl text-primary/70 dark:text-slate-400 mt-4">
           {subtitle}
         </p>
       )}
@@ -181,16 +181,16 @@ export function ProgramCard({
           {icon}
         </div>
         <div className="flex-1">
-          <h3 className="font-serif font-bold text-xl text-foreground dark:text-white">
+          <h3 className="font-serif font-bold text-xl text-primary dark:text-white">
             {title}
           </h3>
         </div>
       </div>
-      <p className="text-muted-foreground dark:text-slate-400 mb-4 leading-relaxed">{description}</p>
+      <p className="text-primary/75 dark:text-slate-400 mb-4 leading-relaxed">{description}</p>
       {features && (
         <ul className="space-y-2 mb-6 text-sm">
           {features.map((feature, idx) => (
-            <li key={idx} className="flex items-center gap-2 text-foreground dark:text-slate-300">
+            <li key={idx} className="flex items-center gap-2 text-primary dark:text-slate-300">
               <span className="w-1.5 h-1.5 rounded-full bg-secondary dark:bg-green-400 flex-shrink-0"></span>
               {feature}
             </li>
@@ -224,7 +224,7 @@ export function Testimonial({
   return (
     <Card variant="default">
       <div className="mb-4 text-accent dark:text-amber-400 text-2xl">"</div>
-      <p className="text-foreground dark:text-slate-100 mb-6 italic leading-relaxed">{quote}</p>
+      <p className="text-primary dark:text-slate-100 mb-6 italic leading-relaxed">{quote}</p>
       <div className="flex items-center gap-3">
         {image && (
           <img
@@ -234,8 +234,8 @@ export function Testimonial({
           />
         )}
         <div>
-          <p className="font-semibold text-foreground dark:text-white">{author}</p>
-          <p className="text-sm text-muted-foreground dark:text-slate-400">{title}</p>
+          <p className="font-semibold text-primary dark:text-white">{author}</p>
+          <p className="text-sm text-primary/70 dark:text-slate-400">{title}</p>
         </div>
       </div>
     </Card>

@@ -83,7 +83,7 @@ export default function Page() {
             <h3 className="font-serif font-bold text-2xl text-primary mb-3">
               Discover
             </h3>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-primary/75 dark:text-muted-foreground mb-4">
               Uncover your unique talents, interests, and career potential through
               guided exploration and assessment programs.
             </p>
@@ -99,7 +99,7 @@ export default function Page() {
             <h3 className="font-serif font-bold text-2xl text-primary mb-3">
               Develop
             </h3>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-primary/75 dark:text-muted-foreground mb-4">
               Build essential skills through hands-on training, mentorship, and
               professional development programs tailored to your goals.
             </p>
@@ -115,7 +115,7 @@ export default function Page() {
             <h3 className="font-serif font-bold text-2xl text-primary mb-3">
               Lead
             </h3>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-primary/75 dark:text-muted-foreground mb-4">
               Step into leadership roles and make a meaningful impact in your
               organization and community with confidence and vision.
             </p>
@@ -132,7 +132,7 @@ export default function Page() {
           <Heading level={2} className="text-primary">
             Our Key Programmes
           </Heading>
-          <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
+          <p className="text-lg text-primary/70 dark:text-muted-foreground mt-4 max-w-2xl mx-auto">
             Choose from our comprehensive range of career and leadership development
             programmes designed for every stage of your journey.
           </p>
