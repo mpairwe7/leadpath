@@ -23,7 +23,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`py-12 md:py-20 lg:py-24 ${bgClasses[bgColor]} ${className}`}
+      className={`py-12 md:py-20 lg:py-24 transition-all duration-500 ${bgClasses[bgColor]} ${className}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
     </section>
@@ -44,11 +44,11 @@ export function Card({
   onClick,
 }: CardProps) {
   const variantClasses = {
-    default: 'bg-white dark:bg-slate-800 border border-border dark:border-slate-700 rounded-lg p-6 hover:shadow-md dark:hover:shadow-lg transition-shadow',
+    default: 'bg-white dark:bg-slate-800 border border-border dark:border-slate-700 rounded-lg p-6 hover:shadow-md dark:hover:shadow-lg hover:-translate-y-1 transition-all duration-300',
     accent:
-      'bg-white dark:bg-slate-800 border border-accent border-opacity-30 dark:border-accent/40 rounded-lg p-6 hover:shadow-lg dark:hover:shadow-lg hover:border-accent transition-all',
+      'bg-white dark:bg-slate-800 border border-accent border-opacity-30 dark:border-accent/40 rounded-lg p-6 hover:shadow-lg dark:hover:shadow-lg hover:border-accent hover:-translate-y-1 transition-all duration-300',
     elevated:
-      'bg-white dark:bg-slate-800 rounded-lg p-6 shadow-md dark:shadow-lg hover:shadow-lg dark:hover:shadow-xl transition-shadow cursor-pointer',
+      'bg-white dark:bg-slate-800 rounded-lg p-6 shadow-md dark:shadow-lg hover:shadow-lg dark:hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer',
   }
 
   return (
