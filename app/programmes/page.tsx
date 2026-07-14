@@ -238,11 +238,7 @@ export default function ProgrammesPage() {
             <Card key={idx} variant="elevated">
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></div>
-<<<<<<< HEAD
                 <p className="font-medium text-primary dark:text-foreground">{feature}</p>
-=======
-                <p className="font-medium text-foreground">{feature}</p>
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
               </div>
             </Card>
           ))}
@@ -255,11 +251,7 @@ export default function ProgrammesPage() {
           <Heading level={2} className="text-primary mb-4">
             Investment in Your Future
           </Heading>
-<<<<<<< HEAD
           <p className="text-lg text-primary/75 dark:text-muted-foreground max-w-2xl mx-auto">
-=======
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
             We offer flexible pricing and scholarship opportunities to ensure
             access for all aspiring professionals and leaders.
           </p>
@@ -308,17 +300,10 @@ export default function ProgrammesPage() {
               <div className="text-3xl font-bold text-accent mb-2">
                 {tier.price}
               </div>
-<<<<<<< HEAD
               <p className="text-primary/75 dark:text-muted-foreground text-sm mb-6">{tier.desc}</p>
               <ul className="space-y-2 mb-6">
                 {tier.features.map((feature, fidx) => (
                   <li key={fidx} className="flex items-center gap-2 text-sm text-primary dark:text-foreground">
-=======
-              <p className="text-muted-foreground text-sm mb-6">{tier.desc}</p>
-              <ul className="space-y-2 mb-6">
-                {tier.features.map((feature, fidx) => (
-                  <li key={fidx} className="flex items-center gap-2 text-sm">
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
                     <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
                     {feature}
                   </li>

@@ -28,24 +28,17 @@ export default function Page() {
       {/* Hero Section */}
       <Section
         bgColor="primary"
-<<<<<<< HEAD
         className="pt-32 pb-20 md:pt-40 md:pb-24 relative overflow-hidden"
         id="hero"
       >
         {/* Background Image Overlay */}
-        <div 
+        <div
           className="absolute inset-0 opacity-20 bg-cover bg-center bg-fixed"
           style={{
             backgroundImage: 'url(/hero-background.png)',
           }}
         />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-=======
-        className="pt-32 pb-20 md:pt-40 md:pb-24"
-        id="hero"
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
           <div>
             <Heading level={1} className="text-white mb-4">
               Empowering Careers
@@ -65,25 +58,13 @@ export default function Page() {
               <Button variant="outline" href="/programmes" size="lg">
                 Explore Programmes
               </Button>
-<<<<<<< HEAD
-          </div>
-        </div>
-=======
-            </div>
-          </div>
-          <div className="relative">
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo.jpg-jfNx7MmRWvfEaLCtCLlEgp9A222wys.jpeg"
-              alt="LeadPath Logo"
-              className="w-full max-w-md mx-auto"
-            />
-          </div>
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
-        </div>
-      </Section>
+            </div >
+          </div >
+        </div >
+      </Section >
 
       {/* Three Pillars Section */}
-      <Section id="pillars" className="bg-white">
+      < Section id="pillars" className="bg-white" >
         <div className="text-center mb-16">
           <Heading
             level={2}
@@ -102,11 +83,7 @@ export default function Page() {
             <h3 className="font-serif font-bold text-2xl text-primary mb-3">
               Discover
             </h3>
-<<<<<<< HEAD
             <p className="text-primary/75 dark:text-muted-foreground mb-4">
-=======
-            <p className="text-muted-foreground mb-4">
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
               Uncover your unique talents, interests, and career potential through
               guided exploration and assessment programs.
             </p>
@@ -122,11 +99,7 @@ export default function Page() {
             <h3 className="font-serif font-bold text-2xl text-primary mb-3">
               Develop
             </h3>
-<<<<<<< HEAD
             <p className="text-primary/75 dark:text-muted-foreground mb-4">
-=======
-            <p className="text-muted-foreground mb-4">
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
               Build essential skills through hands-on training, mentorship, and
               professional development programs tailored to your goals.
             </p>
@@ -142,11 +115,7 @@ export default function Page() {
             <h3 className="font-serif font-bold text-2xl text-primary mb-3">
               Lead
             </h3>
-<<<<<<< HEAD
             <p className="text-primary/75 dark:text-muted-foreground mb-4">
-=======
-            <p className="text-muted-foreground mb-4">
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
               Step into leadership roles and make a meaningful impact in your
               organization and community with confidence and vision.
             </p>
@@ -154,20 +123,16 @@ export default function Page() {
               Learn More →
             </Link>
           </Card>
-        </div>
-      </Section>
+        </div >
+      </Section >
 
       {/* Programmes Overview Section */}
-      <Section id="programmes" bgColor="light">
+      < Section id="programmes" bgColor="light" >
         <div className="text-center mb-16">
           <Heading level={2} className="text-primary">
             Our Key Programmes
           </Heading>
-<<<<<<< HEAD
           <p className="text-lg text-primary/70 dark:text-muted-foreground mt-4 max-w-2xl mx-auto">
-=======
-          <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
             Choose from our comprehensive range of career and leadership development
             programmes designed for every stage of your journey.
           </p>
@@ -214,10 +179,10 @@ export default function Page() {
             features={['One-on-one mentoring', 'Peer learning', 'Skill building']}
           />
         </div>
-      </Section>
+      </Section >
 
       {/* Impact Section */}
-      <Section bgColor="primary" className="bg-gradient-to-br from-primary to-primary/80">
+      < Section bgColor="primary" className="bg-gradient-to-br from-primary to-primary/80" >
         <div className="text-center mb-12">
           <Heading level={2} className="text-white">
             Our Impact
@@ -238,10 +203,10 @@ export default function Page() {
             </div>
           ))}
         </div>
-      </Section>
+      </Section >
 
       {/* CTA Section */}
-      <Section id="cta" className="bg-white py-20">
+      < Section id="cta" className="bg-white py-20" >
         <div className="text-center max-w-3xl mx-auto">
           <Heading
             level={2}
@@ -264,9 +229,9 @@ export default function Page() {
             </Button>
           </div>
         </div>
-      </Section>
+      </Section >
 
       <Footer />
-    </main>
+    </main >
   )
 }

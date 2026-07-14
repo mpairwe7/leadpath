@@ -54,16 +54,10 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-<<<<<<< HEAD
   colorScheme: 'light dark',
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#001f5c' },
     { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
-=======
-  colorScheme: 'light',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#001f5c' },
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
   ],
   width: 'device-width',
   initialScale: 1,
@@ -77,13 +71,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-<<<<<<< HEAD
     <html lang="en" className={`${poppins.variable} ${playfair.variable}`} suppressHydrationWarning>
       <body className="antialiased bg-background dark:bg-slate-900 text-foreground dark:text-slate-100 font-sans transition-colors">
-=======
-    <html lang="en" className={`${poppins.variable} ${playfair.variable}`}>
-      <body className="antialiased bg-background text-foreground font-sans">
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

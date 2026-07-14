@@ -1,9 +1,6 @@
 'use client'
 
-<<<<<<< HEAD
 import Image from 'next/image'
-=======
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { Section, Heading, Card, Button } from '@/components/ui-components'
@@ -31,7 +28,6 @@ export default function AboutPage() {
     },
   ]
 
-<<<<<<< HEAD
   const founders = [
     {
       name: 'Mary Nanyomo',
@@ -53,33 +49,17 @@ export default function AboutPage() {
       title: 'Programme Coordinator',
       bio: 'Experienced career coach specializing in youth empowerment and professional development pathways.',
       image: '/african-team-member-2.png',
-=======
-  const team = [
-    {
-      name: 'Dr. Sarah Kamanja',
-      title: 'Founder & Executive Director',
-      bio: 'Visionary leader with 15+ years of experience in career development and organizational leadership.',
-    },
-    {
-      name: 'James Mutonyi',
-      title: 'Programme Director',
-      bio: 'Experienced career coach specializing in youth empowerment and professional development pathways.',
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
     },
     {
       name: 'Rebecca Ouma',
       title: 'Mentorship Coordinator',
       bio: 'Expert in building meaningful mentoring relationships and supporting leadership development.',
-<<<<<<< HEAD
       image: '/african-team-member-1.png',
-=======
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
     },
     {
       name: 'David Kipchoge',
       title: 'Partnerships Manager',
       bio: 'Strategic thinker focused on building collaborations with leading organizations and institutions.',
-<<<<<<< HEAD
       image: '/african-team-member-4.png',
     },
     {
@@ -87,8 +67,6 @@ export default function AboutPage() {
       title: 'Community Manager',
       bio: 'Passionate about building inclusive communities and ensuring member engagement and success.',
       image: '/african-team-member-3.png',
-=======
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
     },
   ]
 
@@ -121,11 +99,7 @@ export default function AboutPage() {
             <Heading level={2} className="text-primary mb-6">
               Our Story
             </Heading>
-<<<<<<< HEAD
             <div className="space-y-4 text-primary/75 dark:text-muted-foreground">
-=======
-            <div className="space-y-4 text-muted-foreground">
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
               <p>
                 LeadPath was founded on the belief that every individual has the
                 potential to achieve greatness. We recognized a critical gap in
@@ -144,7 +118,6 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-<<<<<<< HEAD
           <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
             <img
               src="/african-career-growth.png"
@@ -189,9 +162,6 @@ export default function AboutPage() {
               </p>
             </div>
           ))}
-=======
-          <div className="bg-muted rounded-lg h-96"></div>
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
         </div>
       </Section>
 
@@ -202,11 +172,7 @@ export default function AboutPage() {
             <h3 className="font-serif font-bold text-2xl text-primary mb-4">
               Our Mission
             </h3>
-<<<<<<< HEAD
             <p className="text-primary/75 dark:text-muted-foreground leading-relaxed">
-=======
-            <p className="text-muted-foreground leading-relaxed">
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
               To empower individuals with the knowledge, skills, and networks
               necessary to build fulfilling careers and become transformational
               leaders in their organizations and communities.
@@ -217,11 +183,7 @@ export default function AboutPage() {
             <h3 className="font-serif font-bold text-2xl text-primary mb-4">
               Our Vision
             </h3>
-<<<<<<< HEAD
             <p className="text-primary/75 dark:text-muted-foreground leading-relaxed">
-=======
-            <p className="text-muted-foreground leading-relaxed">
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
               A world where every person has access to quality career guidance,
               leadership development, and mentorship to reach their full potential
               and create meaningful impact.
@@ -247,11 +209,7 @@ export default function AboutPage() {
               <h3 className="font-serif font-bold text-xl text-primary mb-3">
                 {value.title}
               </h3>
-<<<<<<< HEAD
               <p className="text-primary/75 dark:text-muted-foreground">{value.description}</p>
-=======
-              <p className="text-muted-foreground">{value.description}</p>
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
             </Card>
           ))}
         </div>
@@ -263,18 +221,13 @@ export default function AboutPage() {
           <Heading level={2} className="text-primary mb-2">
             Our Team
           </Heading>
-<<<<<<< HEAD
           <p className="text-lg text-primary/70 dark:text-muted-foreground">
-=======
-          <p className="text-lg text-muted-foreground">
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
             Dedicated professionals committed to your success
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {team.map((member, idx) => (
-<<<<<<< HEAD
             <Card key={idx} variant="default" className="group overflow-hidden">
               <div className="relative w-full h-48 rounded-lg mb-4 overflow-hidden bg-primary/10">
                 <img
@@ -283,21 +236,13 @@ export default function AboutPage() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-=======
-            <Card key={idx} variant="default">
-              <div className="w-full h-48 bg-gradient-to-br from-primary to-primary/50 rounded-lg mb-4"></div>
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
               <h3 className="font-serif font-bold text-lg text-primary mb-1">
                 {member.name}
               </h3>
               <p className="text-sm font-semibold text-accent mb-3">
                 {member.title}
               </p>
-<<<<<<< HEAD
               <p className="text-sm text-primary/75 dark:text-muted-foreground">{member.bio}</p>
-=======
-              <p className="text-sm text-muted-foreground">{member.bio}</p>
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
             </Card>
           ))}
         </div>
@@ -306,7 +251,6 @@ export default function AboutPage() {
       {/* Why Choose Us */}
       <Section id="why-us" className="bg-white">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-<<<<<<< HEAD
           <div className="relative h-96 rounded-lg overflow-hidden shadow-lg order-2 lg:order-1">
             <img
               src="/african-team-collaboration.png"
@@ -316,10 +260,6 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-gradient-to-tr from-secondary/20 to-accent/10" />
           </div>
           <div className="order-1 lg:order-2">
-=======
-          <div className="bg-muted rounded-lg h-96"></div>
-          <div>
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
             <Heading level={2} className="text-primary mb-6">
               Why Choose LeadPath?
             </Heading>
@@ -337,11 +277,7 @@ export default function AboutPage() {
                     size={24}
                     className="text-accent flex-shrink-0 mt-1"
                   />
-<<<<<<< HEAD
                   <p className="text-primary/75 dark:text-muted-foreground">{item}</p>
-=======
-                  <p className="text-muted-foreground">{item}</p>
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
                 </div>
               ))}
             </div>

@@ -14,27 +14,16 @@ export function Section({
   bgColor = 'white',
 }: SectionProps) {
   const bgClasses = {
-<<<<<<< HEAD
     light: 'bg-muted dark:bg-slate-800 text-foreground dark:text-slate-100',
     dark: 'bg-primary dark:bg-slate-950 text-white',
     primary: 'bg-primary dark:bg-slate-950 text-white',
     white: 'bg-white dark:bg-slate-900 text-foreground dark:text-slate-100 transition-colors',
-=======
-    light: 'bg-muted',
-    dark: 'bg-primary text-white',
-    primary: 'bg-primary text-white',
-    white: 'bg-white',
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
   }
 
   return (
     <section
       id={id}
-<<<<<<< HEAD
       className={`py-12 md:py-20 lg:py-24 transition-all duration-500 ${bgClasses[bgColor]} ${className}`}
-=======
-      className={`py-12 md:py-20 lg:py-24 ${bgClasses[bgColor]} ${className}`}
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
     </section>
@@ -55,19 +44,11 @@ export function Card({
   onClick,
 }: CardProps) {
   const variantClasses = {
-<<<<<<< HEAD
     default: 'bg-white dark:bg-slate-800 border border-border dark:border-slate-700 rounded-lg p-6 hover:shadow-md dark:hover:shadow-lg hover:-translate-y-1 transition-all duration-300',
     accent:
       'bg-white dark:bg-slate-800 border border-accent border-opacity-30 dark:border-accent/40 rounded-lg p-6 hover:shadow-lg dark:hover:shadow-lg hover:border-accent hover:-translate-y-1 transition-all duration-300',
     elevated:
       'bg-white dark:bg-slate-800 rounded-lg p-6 shadow-md dark:shadow-lg hover:shadow-lg dark:hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer',
-=======
-    default: 'bg-white border border-border rounded-lg p-6 hover:shadow-md transition-shadow',
-    accent:
-      'bg-white border border-accent border-opacity-30 rounded-lg p-6 hover:shadow-lg hover:border-accent transition-all',
-    elevated:
-      'bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow cursor-pointer',
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
   }
 
   return (
@@ -149,11 +130,7 @@ export function Heading({
   children,
   subtitle,
 }: HeadingProps) {
-<<<<<<< HEAD
   const baseClasses = 'font-serif font-bold text-balance text-primary dark:text-white transition-colors'
-=======
-  const baseClasses = 'font-serif font-bold text-balance'
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
 
   const sizeClasses = {
     1: 'text-4xl md:text-5xl lg:text-6xl',
@@ -174,11 +151,7 @@ export function Heading({
         {children}
       </HeadingTag>
       {subtitle && (
-<<<<<<< HEAD
         <p className="text-lg md:text-xl text-primary/70 dark:text-slate-400 mt-4">
-=======
-        <p className="text-lg md:text-xl text-muted-foreground mt-4">
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
           {subtitle}
         </p>
       )}
@@ -204,38 +177,21 @@ export function ProgramCard({
   return (
     <Card variant="elevated" className="group">
       <div className="flex items-start gap-4 mb-4">
-<<<<<<< HEAD
         <div className="p-3 rounded-lg bg-accent/10 dark:bg-accent/20 text-accent dark:text-amber-400 group-hover:bg-accent dark:group-hover:bg-accent group-hover:text-accent-foreground dark:group-hover:text-slate-900 transition-colors">
           {icon}
         </div>
         <div className="flex-1">
           <h3 className="font-serif font-bold text-xl text-primary dark:text-white">
-=======
-        <div className="p-3 rounded-lg bg-accent/10 text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-          {icon}
-        </div>
-        <div className="flex-1">
-          <h3 className="font-serif font-bold text-xl text-foreground">
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
             {title}
           </h3>
         </div>
       </div>
-<<<<<<< HEAD
       <p className="text-primary/75 dark:text-slate-400 mb-4 leading-relaxed">{description}</p>
       {features && (
         <ul className="space-y-2 mb-6 text-sm">
           {features.map((feature, idx) => (
             <li key={idx} className="flex items-center gap-2 text-primary dark:text-slate-300">
               <span className="w-1.5 h-1.5 rounded-full bg-secondary dark:bg-green-400 flex-shrink-0"></span>
-=======
-      <p className="text-muted-foreground mb-4">{description}</p>
-      {features && (
-        <ul className="space-y-2 mb-6 text-sm">
-          {features.map((feature, idx) => (
-            <li key={idx} className="flex items-center gap-2 text-foreground">
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
               {feature}
             </li>
           ))}
@@ -243,11 +199,7 @@ export function ProgramCard({
       )}
       <a
         href={href}
-<<<<<<< HEAD
         className="inline-flex items-center gap-2 text-accent dark:text-amber-400 font-semibold hover:gap-3 transition-all hover:text-accent/80 dark:hover:text-amber-300"
-=======
-        className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all"
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
       >
         Learn More
         <span>→</span>
@@ -271,33 +223,19 @@ export function Testimonial({
 }: TestimonialProps) {
   return (
     <Card variant="default">
-<<<<<<< HEAD
       <div className="mb-4 text-accent dark:text-amber-400 text-2xl">"</div>
       <p className="text-primary dark:text-slate-100 mb-6 italic leading-relaxed">{quote}</p>
-=======
-      <div className="mb-4 text-accent text-2xl">"</div>
-      <p className="text-foreground mb-6 italic">{quote}</p>
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
       <div className="flex items-center gap-3">
         {image && (
           <img
             src={image}
             alt={author}
-<<<<<<< HEAD
             className="w-12 h-12 rounded-full object-cover ring-2 ring-accent dark:ring-amber-400"
           />
         )}
         <div>
           <p className="font-semibold text-primary dark:text-white">{author}</p>
           <p className="text-sm text-primary/70 dark:text-slate-400">{title}</p>
-=======
-            className="w-12 h-12 rounded-full object-cover"
-          />
-        )}
-        <div>
-          <p className="font-semibold text-foreground">{author}</p>
-          <p className="text-sm text-muted-foreground">{title}</p>
->>>>>>> 13150cae133cc83080d4045ca42dfb2aa03f16bb
         </div>
       </div>
     </Card>
