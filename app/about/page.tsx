@@ -48,21 +48,25 @@ export default function AboutPage() {
       name: 'James Mutonyi',
       title: 'Programme Coordinator',
       bio: 'Experienced career coach specializing in youth empowerment and professional development pathways.',
+      image: '/african-team-member-2.png',
     },
     {
       name: 'Rebecca Ouma',
       title: 'Mentorship Coordinator',
       bio: 'Expert in building meaningful mentoring relationships and supporting leadership development.',
+      image: '/african-team-member-1.png',
     },
     {
       name: 'David Kipchoge',
       title: 'Partnerships Manager',
       bio: 'Strategic thinker focused on building collaborations with leading organizations and institutions.',
+      image: '/african-team-member-4.png',
     },
     {
       name: 'Grace Wairimu',
       title: 'Community Manager',
       bio: 'Passionate about building inclusive communities and ensuring member engagement and success.',
+      image: '/african-team-member-3.png',
     },
   ]
 
@@ -224,8 +228,14 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {team.map((member, idx) => (
-            <Card key={idx} variant="default">
-              <div className="w-full h-48 bg-gradient-to-br from-primary to-primary/50 rounded-lg mb-4"></div>
+            <Card key={idx} variant="default" className="group overflow-hidden">
+              <div className="relative w-full h-48 rounded-lg mb-4 overflow-hidden bg-primary/10">
+                <img
+                  src={member.image}
+                  alt={`${member.name}, ${member.title}`}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
               <h3 className="font-serif font-bold text-lg text-primary mb-1">
                 {member.name}
               </h3>
