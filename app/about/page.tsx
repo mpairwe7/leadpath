@@ -140,16 +140,19 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start mb-12">
           {founders.map((founder, idx) => (
-            <div key={idx} className="group">
-              <div className="relative mb-6 overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div key={idx} className="group flex flex-col items-center text-center">
+              {/* Round avatar */}
+              <div className="relative mb-6 w-48 h-48 rounded-full overflow-hidden shadow-xl ring-4 ring-accent/30 group-hover:ring-accent/70 transition-all duration-300 flex-shrink-0">
                 <img
                   src={founder.image}
                   alt={founder.name}
-                  className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300"
+                  width={192}
+                  height={192}
+                  className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <h3 className="font-serif font-bold text-2xl text-primary mb-1">
                 {founder.name}
@@ -157,7 +160,7 @@ export default function AboutPage() {
               <p className="text-lg font-semibold text-accent mb-4">
                 {founder.title}
               </p>
-              <p className="text-primary/75 dark:text-muted-foreground leading-relaxed">
+              <p className="text-primary/75 dark:text-muted-foreground leading-relaxed max-w-sm">
                 {founder.bio}
               </p>
             </div>
@@ -228,13 +231,17 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {team.map((member, idx) => (
-            <Card key={idx} variant="default" className="group overflow-hidden">
-              <div className="relative w-full h-48 rounded-lg mb-4 overflow-hidden bg-primary/10">
+            <Card key={idx} variant="default" className="group flex flex-col items-center text-center">
+              {/* Round avatar */}
+              <div className="relative mb-4 w-40 h-40 rounded-full overflow-hidden shadow-xl ring-4 ring-accent/30 group-hover:ring-accent/70 transition-all duration-300 flex-shrink-0">
                 <img
                   src={member.image}
                   alt={`${member.name}, ${member.title}`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  width={160}
+                  height={160}
+                  className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
                 />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <h3 className="font-serif font-bold text-lg text-primary mb-1">
                 {member.name}
