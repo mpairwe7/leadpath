@@ -1,13 +1,10 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "next build",
   "outputDirectory": ".next",
   "installCommand": "pnpm install",
   "devCommand": "next dev",
   "regions": ["iad1"],
-  "crons": [],
-  "env": {
-    "NEXT_PUBLIC_ANALYTICS_ID": "@vercel/analytics"
-  },
   "headers": [
     {
       "source": "/public/:path*",
@@ -40,12 +37,6 @@
       ]
     }
   ],
-  "functions": {
-    "api/**": {
-      "memory": 128,
-      "maxDuration": 10
-    }
-  },
   "trailingSlash": false,
   "cleanUrls": true,
   "redirects": [],
