@@ -70,7 +70,7 @@ export function Footer() {
               <h4 className="font-semibold text-white dark:text-slate-100 mb-6 text-sm uppercase tracking-wide">{category}</h4>
               <ul className="space-y-3 text-sm">
                 {links.map((link) => (
-                  <li key={link.href}>
+                  <li key={link.label}>
                     <Link
                       href={link.href}
                       className="text-white/90 dark:text-slate-400 hover:text-white dark:hover:text-white hover:translate-x-0.5 transition-all duration-300 inline-block"
