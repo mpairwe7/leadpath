@@ -24,6 +24,8 @@ const nextConfig = {
       },
     ],
   },
+  // Add this to suppress the turbopack warning
+  turbopack: {},
 
   // Performance optimizations
   swcMinify: true,
