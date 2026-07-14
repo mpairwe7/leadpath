@@ -58,13 +58,13 @@ export default function Page() {
               <Button variant="outline" href="/programmes" size="lg">
                 Explore Programmes
               </Button>
-            </div >
-          </div >
-        </div >
-      </Section >
+            </div>
+          </div>
+        </div>
+      </Section>
 
       {/* Three Pillars Section */}
-      < Section id="pillars" className="bg-white" >
+      <Section id="pillars" className="bg-white">
         <div className="text-center mb-16">
           <Heading
             level={2}
@@ -123,11 +123,11 @@ export default function Page() {
               Learn More →
             </Link>
           </Card>
-        </div >
-      </Section >
+        </div>
+      </Section>
 
       {/* Programmes Overview Section */}
-      < Section id="programmes" bgColor="light" >
+      <Section id="programmes" bgColor="light">
         <div className="text-center mb-16">
           <Heading level={2} className="text-primary">
             Our Key Programmes
@@ -179,10 +179,10 @@ export default function Page() {
             features={['One-on-one mentoring', 'Peer learning', 'Skill building']}
           />
         </div>
-      </Section >
+      </Section>
 
       {/* Impact Section */}
-      < Section bgColor="primary" className="bg-gradient-to-br from-primary to-primary/80" >
+      <Section bgColor="primary" className="bg-gradient-to-br from-primary to-primary/80">
         <div className="text-center mb-12">
           <Heading level={2} className="text-white">
             Our Impact
@@ -203,10 +203,10 @@ export default function Page() {
             </div>
           ))}
         </div>
-      </Section >
+      </Section>
 
       {/* CTA Section */}
-      < Section id="cta" className="bg-white py-20" >
+      <Section id="cta" className="bg-white py-20">
         <div className="text-center max-w-3xl mx-auto">
           <Heading
             level={2}
@@ -229,9 +229,9 @@ export default function Page() {
             </Button>
           </div>
         </div>
-      </Section >
+      </Section>
 
       <Footer />
-    </main >
+    </main>
   )
 }
