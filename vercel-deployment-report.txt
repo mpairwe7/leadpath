@@ -1,0 +1,52 @@
+================================================================================
+                    VERCEL DEPLOYMENT OPTIMIZATION REPORT
+================================================================================
+
+BUILD INFORMATION
+================================================================================
+
+Build Status: ✅ SUCCESSFUL
+Build Time: 2.9s (TypeScript + compilation)
+Pages Generated: 13 routes (all static/prerendered)
+Framework: Next.js 16 with App Router
+Deployment Target: Vercel (iad1 region)
+
+PAGES SUCCESSFULLY PRERENDERED
+================================================================================
+✓ Home (/)
+✓ About (/about)
+✓ Programmes (/programmes)
+✓ Career (/career)
+✓ Leadership (/leadership)
+✓ Entrepreneurship (/entrepreneurship)
+✓ Mentorship (/mentorship)
+✓ Partners (/partners)
+✓ Get Involved (/get-involved)
+✓ Donate (/donate)
+✓ Contact (/contact)
+✓ Error Page (/_not-found)
+
+BUILD OUTPUT STRUCTURE
+================================================================================
+
+BUILD OUTPUT DIRECTORY:
+32K	.next/server/app/leadership.segments
+4.0K	.next/server/app/partners.segments/partners
+32K	.next/server/app/partners.segments
+24K	.next/server/app/index.segments
+4.0K	.next/server/app/mentorship.segments/mentorship
+32K	.next/server/app/mentorship.segments
+4.0K	.next/server/app/programmes.segments/programmes
+32K	.next/server/app/programmes.segments
+1.8M	.next/server/app
+6.2M	.next/server/chunks/ssr
+6.2M	.next/server/chunks
+28K	.next/server/pages
+8.1M	.next/server
+12K	.next/static/T6Jgb3hqDJ1Vde8u96yIA
+872K	.next/static/chunks
+328K	.next/static/media
+1.2M	.next/static
+848K	.next/build/chunks
+860K	.next/build
+32M	.next
