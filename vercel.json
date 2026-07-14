@@ -40,9 +40,6 @@
       ]
     }
   ],
-  "buildCache": {
-    "enabled": true
-  },
   "functions": {
     "api/**": {
       "memory": 128,
