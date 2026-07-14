@@ -52,7 +52,7 @@ export function Navbar() {
               <Link
                 key={`desktop-${link.href}`}
                 href={link.href}
-                className="px-3 py-2 text-sm font-semibold text-foreground dark:text-slate-100 hover:text-primary dark:hover:text-accent rounded-md hover:bg-primary/5 dark:hover:bg-accent/10 transition-all duration-300"
+                className="px-3 py-2 text-sm font-semibold text-primary dark:text-accent hover:text-primary dark:hover:text-accent rounded-md hover:bg-primary/5 dark:hover:bg-accent/10 transition-all duration-300"
               >
                 {link.label}
               </Link>
@@ -83,7 +83,8 @@ export function Navbar() {
             <ThemeSwitcher />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-foreground dark:text-slate-100 hover:bg-muted dark:hover:bg-slate-700 rounded-lg transition-colors"
+              className="p-2 text-primary dark:text-accent hover:bg-primary/10 dark:hover:bg-accent/10 rounded-lg transition-colors duration-300"
+              aria-label="Toggle menu"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -99,7 +100,7 @@ export function Navbar() {
               <Link
                 key={`mobile-${link.href}`}
                 href={link.href}
-                className="block px-4 py-2 text-sm font-semibold text-foreground dark:text-slate-100 hover:bg-primary/5 dark:hover:bg-accent/10 hover:text-primary dark:hover:text-accent rounded-lg transition-all duration-300"
+                className="block px-4 py-2 text-sm font-semibold text-primary dark:text-accent hover:bg-primary/5 dark:hover:bg-accent/10 hover:text-primary dark:hover:text-accent rounded-lg transition-all duration-300"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
