@@ -4,7 +4,9 @@
   "outputDirectory": ".next",
   "installCommand": "pnpm install",
   "devCommand": "next dev",
-  "regions": ["iad1"],
+  "regions": [
+    "iad1"
+  ],
   "headers": [
     {
       "source": "/public/:path*",
@@ -40,5 +42,6 @@
   "trailingSlash": false,
   "cleanUrls": true,
   "redirects": [],
-  "rewrites": []
+  "rewrites": [],
+  "crons": []
 }
