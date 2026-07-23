@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { Section, Heading, Card, Button } from '@/components/ui-components'
@@ -72,20 +73,38 @@ export default function DonatePage() {
   ]
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero */}
-      <Section bgColor="primary" className="pt-32 pb-16 md:pt-40 md:pb-20" id="hero">
-        <div>
-          <Heading level={1} className="text-white mb-6">
-            Support Our <span className="text-accent">Mission</span>
-          </Heading>
-          <p className="text-xl text-white/90 max-w-3xl leading-relaxed">
-            Your donation helps us empower careers and inspire leaders. Every contribution makes a tangible difference in someone&apos;s life.
-          </p>
+      {/* Hero — split screen */}
+      <div className="pt-24 md:pt-28 px-4 sm:px-6 lg:px-8" id="hero">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative overflow-hidden rounded-3xl bg-navy grid grid-cols-1 lg:grid-cols-[1.1fr_1fr]">
+            <div className="relative z-10 px-6 py-14 sm:px-10 md:px-14 md:py-20">
+              <p className="font-serif text-xs font-bold uppercase tracking-[0.14em] text-accent mb-4">
+                Donate
+              </p>
+              <h1 className="font-serif font-extrabold tracking-tight text-balance text-4xl md:text-5xl text-white mb-5">
+                Support our mission
+              </h1>
+              <p className="text-lg text-white/85 max-w-lg leading-relaxed">
+                Your donation helps us empower careers and inspire leaders. Every
+                contribution makes a tangible difference in someone&apos;s life.
+              </p>
+            </div>
+            <div className="relative min-h-[220px]">
+              <Image
+                src="/african-career-growth.png"
+                alt="A LeadPath member advancing their career"
+                fill
+                sizes="(max-width: 1024px) 100vw, 640px"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/30 to-transparent" />
+            </div>
+          </div>
         </div>
-      </Section>
+      </div>
 
       {/* Impact Summary */}
       <Section id="impact" className="bg-white">
@@ -102,9 +121,9 @@ export default function DonatePage() {
           {impacts.map((item, idx) => (
             <Card key={idx} variant="elevated" className="text-center">
               <div className="mb-4 p-3 w-fit rounded-lg bg-accent/10 mx-auto">
-                <div className="text-accent">{item.icon}</div>
+                <div className="text-accent-ink">{item.icon}</div>
               </div>
-              <div className="text-3xl font-bold text-accent mb-2">{item.metric}</div>
+              <div className="text-3xl font-bold text-accent-ink mb-2">{item.metric}</div>
               <p className="text-muted-foreground text-sm">{item.description}</p>
             </Card>
           ))}
@@ -133,13 +152,13 @@ export default function DonatePage() {
                 {tier.title}
               </h3>
               <div className="mb-4">
-                <div className="text-4xl font-bold text-accent">{tier.amount}</div>
+                <div className="text-4xl font-bold text-accent-ink">{tier.amount}</div>
                 <div className="text-muted-foreground text-sm">{tier.period}</div>
               </div>
               <p className="text-muted-foreground mb-4">{tier.description}</p>
               <div className="p-3 bg-accent/5 rounded-lg mb-6">
                 <p className="text-sm font-medium text-foreground">
-                  <span className="text-accent font-bold">Impact:</span> {tier.impact}
+                  <span className="text-accent-ink font-bold">Impact:</span> {tier.impact}
                 </p>
               </div>
               <ul className="space-y-2 mb-6">
@@ -223,7 +242,7 @@ export default function DonatePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <Card variant="elevated">
-            <div className="w-full h-64 bg-gradient-to-br from-accent to-primary rounded-lg mb-4 flex items-center justify-center">
+            <div className="w-full h-64 bg-gradient-to-br from-navy-700 to-navy-950 rounded-lg mb-4 flex items-center justify-center">
               <div className="text-center text-white">
                 <div className="text-4xl font-bold mb-2">60%</div>
                 <div className="text-sm">Programme Delivery</div>
@@ -238,7 +257,7 @@ export default function DonatePage() {
           </Card>
 
           <Card variant="elevated">
-            <div className="w-full h-64 bg-gradient-to-br from-secondary to-primary rounded-lg mb-4 flex items-center justify-center">
+            <div className="w-full h-64 bg-gradient-to-br from-navy-800 to-navy-950 rounded-lg mb-4 flex items-center justify-center">
               <div className="text-center text-white">
                 <div className="text-4xl font-bold mb-2">25%</div>
                 <div className="text-sm">Operations</div>
@@ -254,8 +273,8 @@ export default function DonatePage() {
         </div>
 
         <Card variant="elevated">
-          <div className="w-full h-64 bg-gradient-to-br from-muted to-accent rounded-lg mb-4 flex items-center justify-center">
-            <div className="text-center text-foreground">
+          <div className="w-full h-64 bg-gradient-to-br from-navy-600 to-navy-900 rounded-lg mb-4 flex items-center justify-center">
+            <div className="text-center text-white">
               <div className="text-4xl font-bold mb-2">15%</div>
               <div className="text-sm">Growth & Impact</div>
             </div>
@@ -298,7 +317,7 @@ export default function DonatePage() {
           ].map((item, idx) => (
             <Card key={idx} variant="default">
               <details className="cursor-pointer">
-                <summary className="font-semibold text-foreground hover:text-accent transition-colors">
+                <summary className="font-semibold text-foreground hover:text-accent-ink transition-colors">
                   {item.q}
                 </summary>
                 <p className="text-muted-foreground mt-3">{item.a}</p>
@@ -316,7 +335,7 @@ export default function DonatePage() {
         <p className="text-white/90 max-w-2xl mx-auto mb-8 text-lg">
           Your generosity empowers careers and inspires leaders. Thank you for supporting our mission.
         </p>
-        <Button variant="primary" href="#tiers" size="lg">
+        <Button variant="gold" href="#tiers" size="lg">
           Choose Donation Amount
         </Button>
       </Section>

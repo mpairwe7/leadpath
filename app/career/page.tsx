@@ -89,7 +89,7 @@ export default function CareerPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-background">
       <Navbar />
 
       {/* Hero Section */}
@@ -127,7 +127,7 @@ export default function CareerPage() {
             return (
               <Card key={idx} variant="elevated">
                 <div className="mb-4 p-3 w-fit rounded-lg bg-accent/10">
-                  <Icon size={28} className="text-accent" />
+                  <Icon size={28} className="text-accent-ink" />
                 </div>
                 <h3 className="font-serif font-bold text-xl text-primary mb-2">
                   {stage.title}
@@ -159,7 +159,7 @@ export default function CareerPage() {
               <div className="mb-4 p-4 w-fit rounded-lg bg-accent/10 group-hover:bg-accent group-hover:text-white transition-colors">
                 {service.icon}
               </div>
-              <h3 className="font-serif font-bold text-2xl text-primary mb-3 group-hover:text-accent transition-colors">
+              <h3 className="font-serif font-bold text-2xl text-primary mb-3 group-hover:text-accent-ink transition-colors">
                 {service.title}
               </h3>
               <p className="text-muted-foreground mb-6">{service.description}</p>
@@ -216,11 +216,11 @@ export default function CareerPage() {
             },
           ].map((story, idx) => (
             <Card key={idx} variant="default">
-              <div className="mb-4 text-accent text-3xl">"</div>
+              <div className="mb-4 text-accent-ink text-3xl">"</div>
               <p className="text-foreground mb-6 italic">{story.story}</p>
               <div>
                 <p className="font-semibold text-foreground">{story.name}</p>
-                <p className="text-sm text-accent font-medium">{story.role}</p>
+                <p className="text-sm text-accent-ink font-medium">{story.role}</p>
               </div>
             </Card>
           ))}
@@ -256,7 +256,7 @@ export default function CareerPage() {
           ].map((item, idx) => (
             <Card key={idx} variant="elevated">
               <details className="cursor-pointer">
-                <summary className="font-semibold text-foreground hover:text-accent transition-colors">
+                <summary className="font-semibold text-foreground hover:text-accent-ink transition-colors">
                   {item.q}
                 </summary>
                 <p className="text-muted-foreground mt-3">{item.a}</p>
@@ -275,7 +275,7 @@ export default function CareerPage() {
           Join hundreds of professionals who have achieved their career goals with
           LeadPath. Your journey starts here.
         </p>
-        <Button variant="primary" href="/get-involved" size="lg">
+        <Button variant="gold" href="/get-involved" size="lg">
           Begin Your Journey
         </Button>
       </Section>

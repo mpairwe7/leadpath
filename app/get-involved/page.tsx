@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { Section, Heading, Card, Button } from '@/components/ui-components'
@@ -58,20 +59,40 @@ export default function GetInvolvedPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero */}
-      <Section bgColor="primary" className="pt-32 pb-16 md:pt-40 md:pb-20" id="hero">
-        <div>
-          <Heading level={1} className="text-white mb-6">
-            Join Our <span className="text-accent">Community</span>
-          </Heading>
-          <p className="text-xl text-white/90 max-w-3xl leading-relaxed">
-            Take the first step towards career growth and leadership excellence. Whether you&apos;re looking to be mentored, mentor others, partner with us, or support our mission, there&apos;s a place for you at LeadPath.
-          </p>
+      {/* Hero — split screen */}
+      <div className="pt-24 md:pt-28 px-4 sm:px-6 lg:px-8" id="hero">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative overflow-hidden rounded-3xl bg-navy grid grid-cols-1 lg:grid-cols-[1.1fr_1fr]">
+            <div className="relative z-10 px-6 py-14 sm:px-10 md:px-14 md:py-20">
+              <p className="font-serif text-xs font-bold uppercase tracking-[0.14em] text-accent mb-4">
+                Get involved
+              </p>
+              <h1 className="font-serif font-extrabold tracking-tight text-balance text-4xl md:text-5xl text-white mb-5">
+                Join our community
+              </h1>
+              <p className="text-lg text-white/85 max-w-lg leading-relaxed">
+                Take the first step towards career growth and leadership
+                excellence. Whether you&apos;re looking to be mentored, mentor
+                others, partner with us, or support our mission, there&apos;s a
+                place for you at LeadPath.
+              </p>
+            </div>
+            <div className="relative min-h-[220px]">
+              <Image
+                src="/african-team-collaboration.png"
+                alt="LeadPath members working together"
+                fill
+                sizes="(max-width: 1024px) 100vw, 640px"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/30 to-transparent" />
+            </div>
+          </div>
         </div>
-      </Section>
+      </div>
 
       {/* Ways to Get Involved */}
       <Section id="ways" className="bg-white">
@@ -87,7 +108,7 @@ export default function GetInvolvedPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {ways.map((way, idx) => (
             <Card key={idx} variant="elevated" className="group hover:shadow-lg transition-shadow">
-              <h3 className="font-serif font-bold text-2xl text-primary mb-3 group-hover:text-accent transition-colors">
+              <h3 className="font-serif font-bold text-2xl text-primary mb-3 group-hover:text-accent-ink transition-colors">
                 {way.title}
               </h3>
               <p className="text-muted-foreground mb-6">{way.description}</p>
@@ -122,7 +143,7 @@ export default function GetInvolvedPage() {
             'Ongoing support on your journey to success',
           ].map((benefit, idx) => (
             <Card key={idx} variant="default" className="flex items-start gap-4">
-              <CheckCircle2 size={24} className="text-accent flex-shrink-0 mt-1" />
+              <CheckCircle2 size={24} className="text-accent-ink flex-shrink-0 mt-1" />
               <p className="text-foreground font-medium">{benefit}</p>
             </Card>
           ))}
@@ -167,7 +188,7 @@ export default function GetInvolvedPage() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
                       placeholder="Your name"
                     />
                   </div>
@@ -181,7 +202,7 @@ export default function GetInvolvedPage() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -197,7 +218,7 @@ export default function GetInvolvedPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
                       placeholder="+256..."
                     />
                   </div>
@@ -210,7 +231,7 @@ export default function GetInvolvedPage() {
                       value={formData.interest}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
                     >
                       <option value="career">Career Development</option>
                       <option value="leadership">Leadership Programme</option>
@@ -231,7 +252,7 @@ export default function GetInvolvedPage() {
                     name="experience"
                     value={formData.experience}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
+                    className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
                   >
                     <option value="">Select your experience level</option>
                     <option value="student">Student</option>
@@ -251,7 +272,7 @@ export default function GetInvolvedPage() {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground resize-none"
+                    className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground resize-none"
                     placeholder="Share your goals, interests, or any other relevant information..."
                   ></textarea>
                 </div>

@@ -53,7 +53,7 @@ export default function EntrepreneurshipPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-background">
       <Navbar />
 
       {/* Hero */}
@@ -83,7 +83,7 @@ export default function EntrepreneurshipPage() {
           {stages.map((stage, idx) => (
             <Card key={idx} variant="elevated">
               <div className="mb-4 p-3 w-fit rounded-lg bg-accent/10">
-                <div className="text-accent">{stage.icon}</div>
+                <div className="text-accent-ink">{stage.icon}</div>
               </div>
               <h3 className="font-serif font-bold text-xl text-primary mb-2">
                 {stage.title}
@@ -108,7 +108,7 @@ export default function EntrepreneurshipPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, idx) => (
             <Card key={idx} variant="elevated" className="group">
-              <h3 className="font-serif font-bold text-2xl text-primary mb-3 group-hover:text-accent transition-colors">
+              <h3 className="font-serif font-bold text-2xl text-primary mb-3 group-hover:text-accent-ink transition-colors">
                 {service.title}
               </h3>
               <p className="text-muted-foreground mb-6">{service.description}</p>
@@ -140,7 +140,7 @@ export default function EntrepreneurshipPage() {
             { metric: '$45M+', label: 'Total Funding Raised' },
           ].map((item, idx) => (
             <Card key={idx} variant="elevated" className="text-center">
-              <div className="text-4xl font-bold text-accent mb-2">{item.metric}</div>
+              <div className="text-4xl font-bold text-accent-ink mb-2">{item.metric}</div>
               <p className="text-foreground font-medium">{item.label}</p>
             </Card>
           ))}
@@ -155,7 +155,7 @@ export default function EntrepreneurshipPage() {
         <p className="text-white/90 max-w-2xl mx-auto mb-8 text-lg">
           Join our entrepreneurship programme and connect with mentors, investors, and fellow founders.
         </p>
-        <Button variant="primary" href="/get-involved" size="lg">
+        <Button variant="gold" href="/get-involved" size="lg">
           Start Your Startup Journey
         </Button>
       </Section>

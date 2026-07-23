@@ -22,13 +22,10 @@ export function ThemeSwitcher() {
     if (!mounted) return
 
     const html = document.documentElement
-    if (isDark) {
-      html.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
-    } else {
-      html.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
-    }
+    // The explicit .light class opts out of the prefers-color-scheme fallback
+    html.classList.toggle('dark', isDark)
+    html.classList.toggle('light', !isDark)
+    localStorage.setItem('theme', isDark ? 'dark' : 'light')
   }, [isDark, mounted])
 
   if (!mounted) return null
@@ -36,14 +33,14 @@ export function ThemeSwitcher() {
   return (
     <button
       onClick={() => setIsDark(!isDark)}
-      className="p-2 rounded-lg transition-colors hover:bg-muted dark:hover:bg-slate-700 text-foreground dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+      className="p-2 rounded-full transition-colors hover:bg-muted dark:hover:bg-navy-700 text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       aria-label="Toggle theme"
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {isDark ? (
-        <Sun size={20} className="text-yellow-500" />
+        <Sun size={20} className="text-accent" />
       ) : (
-        <Moon size={20} className="text-slate-600" />
+        <Moon size={20} className="text-navy-500" />
       )}
     </button>
   )

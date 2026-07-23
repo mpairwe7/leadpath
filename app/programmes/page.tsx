@@ -115,7 +115,7 @@ export default function ProgrammesPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-background">
       <Navbar />
 
       {/* Hero Section */}
@@ -197,11 +197,11 @@ export default function ProgrammesPage() {
             <div key={idx} className="relative">
               <Card variant="default">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-full bg-accent text-white flex items-center justify-center font-bold text-lg">
+                  <div className="w-12 h-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-lg">
                     {item.step}
                   </div>
                   {idx < 3 && (
-                    <div className="hidden md:block absolute -right-4 top-6 text-accent text-2xl">
+                    <div className="hidden md:block absolute -right-4 top-6 text-accent-ink text-2xl">
                       →
                     </div>
                   )}
@@ -297,7 +297,7 @@ export default function ProgrammesPage() {
               <h3 className="font-serif font-bold text-2xl text-primary mb-2">
                 {tier.name}
               </h3>
-              <div className="text-3xl font-bold text-accent mb-2">
+              <div className="text-3xl font-bold text-accent-ink mb-2">
                 {tier.price}
               </div>
               <p className="text-primary/75 dark:text-muted-foreground text-sm mb-6">{tier.desc}</p>
@@ -330,7 +330,7 @@ export default function ProgrammesPage() {
           Choose the programme that&apos;s right for you and start your transformation
           journey today.
         </p>
-        <Button variant="primary" href="/get-involved" size="lg">
+        <Button variant="gold" href="/get-involved" size="lg">
           Explore Programmes
         </Button>
       </Section>

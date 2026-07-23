@@ -53,7 +53,7 @@ export default function MentorshipPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-background">
       <Navbar />
 
       {/* Hero */}
@@ -83,7 +83,7 @@ export default function MentorshipPage() {
           {benefits.map((benefit, idx) => (
             <Card key={idx} variant="elevated">
               <div className="mb-4 p-3 w-fit rounded-lg bg-accent/10">
-                <div className="text-accent">{benefit.icon}</div>
+                <div className="text-accent-ink">{benefit.icon}</div>
               </div>
               <h3 className="font-serif font-bold text-xl text-primary mb-2">
                 {benefit.title}
@@ -108,7 +108,7 @@ export default function MentorshipPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {mentorshipFormats.map((format, idx) => (
             <Card key={idx} variant="elevated" className="group">
-              <h3 className="font-serif font-bold text-2xl text-primary mb-2 group-hover:text-accent transition-colors">
+              <h3 className="font-serif font-bold text-2xl text-primary mb-2 group-hover:text-accent-ink transition-colors">
                 {format.title}
               </h3>
               <p className="text-muted-foreground mb-4">{format.description}</p>
@@ -137,11 +137,11 @@ export default function MentorshipPage() {
             { name: 'Michael Okoro', title: 'Strategy Consultant', bio: 'Business growth advisor' },
           ].map((mentor, idx) => (
             <Card key={idx} variant="default">
-              <div className="w-full h-32 bg-gradient-to-br from-primary to-primary/50 rounded-lg mb-4"></div>
+              <div className="w-full h-32 bg-gradient-to-br from-navy to-navy-2 rounded-lg mb-4"></div>
               <h3 className="font-serif font-bold text-lg text-primary mb-1">
                 {mentor.name}
               </h3>
-              <p className="text-sm font-semibold text-accent mb-3">{mentor.title}</p>
+              <p className="text-sm font-semibold text-accent-ink mb-3">{mentor.title}</p>
               <p className="text-sm text-muted-foreground">{mentor.bio}</p>
             </Card>
           ))}
@@ -164,7 +164,7 @@ export default function MentorshipPage() {
             { step: '4', title: 'Grow', desc: 'Achieve your goals' },
           ].map((item, idx) => (
             <Card key={idx} variant="default">
-              <div className="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-bold mb-3">
+              <div className="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold mb-3">
                 {item.step}
               </div>
               <h3 className="font-serif font-bold text-lg text-primary mb-2">
@@ -184,7 +184,7 @@ export default function MentorshipPage() {
         <p className="text-white/90 max-w-2xl mx-auto mb-8 text-lg">
           Join our mentorship programme and accelerate your career growth with guidance from experienced professionals.
         </p>
-        <Button variant="primary" href="/get-involved" size="lg">
+        <Button variant="gold" href="/get-involved" size="lg">
           Find a Mentor Today
         </Button>
       </Section>

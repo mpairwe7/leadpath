@@ -1,18 +1,18 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Poppins, Playfair_Display } from 'next/font/google'
+import { Archivo, Inter } from 'next/font/google'
 import './globals.css'
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
-  variable: '--font-sans',
+  variable: '--font-inter',
 })
 
-const playfair = Playfair_Display({
+const archivo = Archivo({
   subsets: ['latin'],
-  weight: ['600', '700'],
-  variable: '--font-serif',
+  weight: ['600', '700', '800'],
+  variable: '--font-archivo',
 })
 
 export const metadata: Metadata = {
@@ -56,8 +56,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: 'light dark',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#001f5c' },
-    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
+    { media: '(prefers-color-scheme: light)', color: '#0b1f4b' },
+    { media: '(prefers-color-scheme: dark)', color: '#081226' },
   ],
   width: 'device-width',
   initialScale: 1,
@@ -65,14 +65,19 @@ export const viewport: Viewport = {
   userScalable: true,
 }
 
+const themeInit = `(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;var c=document.documentElement.classList;c.toggle('dark',d);c.toggle('light',!d);}catch(e){}})()`
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${playfair.variable}`} suppressHydrationWarning>
-      <body className="antialiased bg-background dark:bg-slate-900 text-foreground dark:text-slate-100 font-sans transition-colors">
+    <html lang="en" className={`${inter.variable} ${archivo.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+      </head>
+      <body className="antialiased bg-background text-foreground font-sans transition-colors">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

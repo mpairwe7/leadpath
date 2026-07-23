@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { Section, Heading, Card, Button } from '@/components/ui-components'
@@ -32,33 +33,51 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero */}
-      <Section bgColor="primary" className="pt-32 pb-16 md:pt-40 md:pb-20" id="hero">
-        <div>
-          <Heading level={1} className="text-white mb-6">
-            Get in <span className="text-accent">Touch</span>
-          </Heading>
-          <p className="text-xl text-white/90 max-w-3xl leading-relaxed">
-            Have questions? We&apos;d love to hear from you. Reach out to us through any of the channels below.
-          </p>
+      {/* Hero — split screen */}
+      <div className="pt-24 md:pt-28 px-4 sm:px-6 lg:px-8" id="hero">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative overflow-hidden rounded-3xl bg-navy grid grid-cols-1 lg:grid-cols-[1.1fr_1fr]">
+            <div className="relative z-10 px-6 py-14 sm:px-10 md:px-14 md:py-20">
+              <p className="font-serif text-xs font-bold uppercase tracking-[0.14em] text-accent mb-4">
+                Contact
+              </p>
+              <h1 className="font-serif font-extrabold tracking-tight text-balance text-4xl md:text-5xl text-white mb-5">
+                Get in touch
+              </h1>
+              <p className="text-lg text-white/85 max-w-lg leading-relaxed">
+                Have questions? We&apos;d love to hear from you. Reach out through
+                any of the channels below — we respond within 24 business hours.
+              </p>
+            </div>
+            <div className="relative min-h-[220px]">
+              <Image
+                src="/african-team-member-2.png"
+                alt="A LeadPath team member ready to help"
+                fill
+                sizes="(max-width: 1024px) 100vw, 640px"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/30 to-transparent" />
+            </div>
+          </div>
         </div>
-      </Section>
+      </div>
 
       {/* Contact Info Cards */}
       <Section id="contact-info" className="bg-white">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           <Card variant="elevated">
             <div className="mb-4 p-3 w-fit rounded-lg bg-accent/10">
-              <Mail size={24} className="text-accent" />
+              <Mail size={24} className="text-accent-ink" />
             </div>
             <h3 className="font-serif font-bold text-lg text-primary mb-2">Email</h3>
             <p className="text-muted-foreground text-sm mb-3">
               Reach out to us via email for detailed inquiries
             </p>
-            <a href="mailto:info@leadpath.org" className="text-accent font-semibold hover:text-accent/80 transition-colors">
+            <a href="mailto:info@leadpath.org" className="text-accent-ink font-semibold hover:text-accent-ink/80 transition-colors">
               info@leadpath.org
             </a>
           </Card>
@@ -71,7 +90,7 @@ export default function ContactPage() {
             <p className="text-muted-foreground text-sm mb-3">
               Call us during business hours
             </p>
-            <a href="tel:+256700000000" className="text-accent font-semibold hover:text-accent/80 transition-colors">
+            <a href="tel:+256700000000" className="text-accent-ink font-semibold hover:text-accent-ink/80 transition-colors">
               +256 700 000 000
             </a>
           </Card>
@@ -84,20 +103,20 @@ export default function ContactPage() {
             <p className="text-muted-foreground text-sm mb-3">
               Quick chat on WhatsApp
             </p>
-            <a href="https://wa.me/256700000000" className="text-accent font-semibold hover:text-accent/80 transition-colors">
+            <a href="https://wa.me/256700000000" className="text-accent-ink font-semibold hover:text-accent-ink/80 transition-colors">
               Message us
             </a>
           </Card>
 
           <Card variant="elevated">
             <div className="mb-4 p-3 w-fit rounded-lg bg-accent/10">
-              <MapPin size={24} className="text-accent" />
+              <MapPin size={24} className="text-accent-ink" />
             </div>
             <h3 className="font-serif font-bold text-lg text-primary mb-2">Location</h3>
             <p className="text-muted-foreground text-sm mb-3">
               Visit us in Kampala
             </p>
-            <p className="text-accent font-semibold">Kampala, Uganda</p>
+            <p className="text-accent-ink font-semibold">Kampala, Uganda</p>
           </Card>
         </div>
       </Section>
@@ -135,7 +154,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
                       placeholder="Your name"
                     />
                   </div>
@@ -150,7 +169,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -165,7 +184,7 @@ export default function ContactPage() {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
                       placeholder="How can we help?"
                     />
                   </div>
@@ -180,7 +199,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground resize-none"
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground resize-none"
                       placeholder="Your message..."
                     ></textarea>
                   </div>
@@ -224,22 +243,22 @@ export default function ContactPage() {
               </h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="/get-involved" className="text-accent hover:text-accent/80 transition-colors">
+                  <a href="/get-involved" className="text-accent-ink hover:text-accent-ink/80 transition-colors">
                     Get Involved →
                   </a>
                 </li>
                 <li>
-                  <a href="/programmes" className="text-accent hover:text-accent/80 transition-colors">
+                  <a href="/programmes" className="text-accent-ink hover:text-accent-ink/80 transition-colors">
                     Our Programmes →
                   </a>
                 </li>
                 <li>
-                  <a href="/partners" className="text-accent hover:text-accent/80 transition-colors">
+                  <a href="/partners" className="text-accent-ink hover:text-accent-ink/80 transition-colors">
                     Partnerships →
                   </a>
                 </li>
                 <li>
-                  <a href="/donate" className="text-accent hover:text-accent/80 transition-colors">
+                  <a href="/donate" className="text-accent-ink hover:text-accent-ink/80 transition-colors">
                     Donate →
                   </a>
                 </li>
@@ -274,7 +293,7 @@ export default function ContactPage() {
           ].map((item, idx) => (
             <Card key={idx} variant="default">
               <details className="cursor-pointer">
-                <summary className="font-semibold text-foreground hover:text-accent transition-colors">
+                <summary className="font-semibold text-foreground hover:text-accent-ink transition-colors">
                   {item.q}
                 </summary>
                 <p className="text-muted-foreground mt-3">{item.a}</p>

@@ -43,7 +43,7 @@ export default function PartnersPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-background">
       <Navbar />
 
       {/* Hero */}
@@ -75,7 +75,7 @@ export default function PartnersPage() {
               <div className="mb-4 p-4 w-fit rounded-lg bg-accent/10 group-hover:bg-accent group-hover:text-white transition-colors">
                 {partner.icon}
               </div>
-              <h3 className="font-serif font-bold text-2xl text-primary mb-2 group-hover:text-accent transition-colors">
+              <h3 className="font-serif font-bold text-2xl text-primary mb-2 group-hover:text-accent-ink transition-colors">
                 {partner.title}
               </h3>
               <p className="text-muted-foreground mb-6">{partner.description}</p>
@@ -156,7 +156,7 @@ export default function PartnersPage() {
             { step: '4', title: 'Measure', desc: 'Track impact and outcomes' },
           ].map((item, idx) => (
             <Card key={idx} variant="default">
-              <div className="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-bold mb-3">
+              <div className="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold mb-3">
                 {item.step}
               </div>
               <h3 className="font-serif font-bold text-lg text-primary mb-2">
@@ -176,7 +176,7 @@ export default function PartnersPage() {
         <p className="text-white/90 max-w-2xl mx-auto mb-8 text-lg">
           Ready to partner with LeadPath? Contact us to discuss how we can work together.
         </p>
-        <Button variant="primary" href="/contact" size="lg">
+        <Button variant="gold" href="/contact" size="lg">
           Get in Touch
         </Button>
       </Section>

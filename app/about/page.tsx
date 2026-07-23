@@ -9,7 +9,7 @@ import { CheckCircle2, Award, Target } from 'lucide-react'
 export default function AboutPage() {
   const values = [
     {
-      icon: <Target className="text-accent" />,
+      icon: <Target className="text-accent-ink" />,
       title: 'Intentional Growth',
       description:
         'We create focused, meaningful experiences that lead to lasting professional development and personal transformation.',
@@ -71,7 +71,7 @@ export default function AboutPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-background">
       <Navbar />
 
       {/* Hero Section */}
@@ -157,7 +157,7 @@ export default function AboutPage() {
               <h3 className="font-serif font-bold text-2xl text-primary mb-1">
                 {founder.name}
               </h3>
-              <p className="text-lg font-semibold text-accent mb-4">
+              <p className="text-lg font-semibold text-accent-ink mb-4">
                 {founder.title}
               </p>
               <p className="text-primary/75 dark:text-muted-foreground leading-relaxed max-w-sm">
@@ -246,7 +246,7 @@ export default function AboutPage() {
               <h3 className="font-serif font-bold text-lg text-primary mb-1">
                 {member.name}
               </h3>
-              <p className="text-sm font-semibold text-accent mb-3">
+              <p className="text-sm font-semibold text-accent-ink mb-3">
                 {member.title}
               </p>
               <p className="text-sm text-primary/75 dark:text-muted-foreground">{member.bio}</p>
@@ -282,7 +282,7 @@ export default function AboutPage() {
                 <div key={idx} className="flex items-start gap-3">
                   <CheckCircle2
                     size={24}
-                    className="text-accent flex-shrink-0 mt-1"
+                    className="text-accent-ink flex-shrink-0 mt-1"
                   />
                   <p className="text-primary/75 dark:text-muted-foreground">{item}</p>
                 </div>
@@ -301,7 +301,7 @@ export default function AboutPage() {
           Become part of a thriving network of professionals dedicated to career
           growth and leadership excellence.
         </p>
-        <Button variant="primary" href="/get-involved" size="lg">
+        <Button variant="gold" href="/get-involved" size="lg">
           Get Started Now
         </Button>
       </Section>
