@@ -1,75 +1,48 @@
 'use client'
 
+import { Suspense } from 'react'
 import Image from 'next/image'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
+import { DonationForm } from '@/components/donation-form'
+import { DonationStatusNotice } from '@/components/donation-status-notice'
 import { Section, Heading, Card, Button } from '@/components/ui-components'
-import { Heart, TrendingUp, Users, Award, DollarSign, CheckCircle2 } from 'lucide-react'
+import { featuredCampaign } from '@/lib/campaigns'
+import { Heart, TrendingUp, Users, Award, Sparkles } from 'lucide-react'
 
 export default function DonatePage() {
-  const donationTiers = [
+  const campaign = featuredCampaign()
+
+  // Framed as what a gift funds rather than as checkout buttons — the amounts
+  // are chosen in the form below, in either currency.
+  const impactLevels = [
     {
-      amount: '$25',
-      period: 'per month',
       title: 'Supporter',
-      description: 'Help us provide scholarships to deserving mentees',
-      impact: 'Supports 1 mentee for a month',
-      features: [
-        'Donor recognition on website',
-        'Monthly impact report',
-        'Certificate of appreciation',
-      ],
+      guide: 'From $25 / USh 90,000',
+      impact: 'Supports one participant through a month of the programme',
     },
     {
-      amount: '$100',
-      period: 'per month',
       title: 'Partner',
-      description: 'Fund comprehensive mentorship programmes',
-      impact: 'Supports 5 mentees for a month',
-      features: [
-        'All Supporter benefits',
-        'Quarterly impact calls',
-        'Listed as Partner on website',
-        'Tax receipt',
-      ],
+      guide: 'From $100 / USh 370,000',
+      impact: 'Funds a full mentorship cycle for five participants',
       highlight: true,
     },
     {
-      amount: '$500',
-      period: 'per month',
       title: 'Champion',
-      description: 'Enable entire programme delivery',
-      impact: 'Supports 20+ mentees for a month',
-      features: [
-        'All Partner benefits',
-        'Priority impact updates',
-        'Named programme sponsor',
-        'Annual recognition event',
-      ],
+      guide: 'From $500 / USh 1,850,000',
+      impact: 'Underwrites programme delivery for a cohort of twenty',
     },
   ]
 
   const impacts = [
-    {
-      icon: <Users size={32} />,
-      metric: '50',
-      description: 'Mentees trained & supported',
-    },
-    {
-      icon: <Award size={32} />,
-      metric: '85%',
-      description: 'Career advancement rate',
-    },
+    { icon: <Users size={32} />, metric: '2,500+', description: 'Members empowered' },
+    { icon: <Award size={32} />, metric: '85%', description: 'Career success rate' },
     {
       icon: <TrendingUp size={32} />,
-      metric: '6 months',
-      description: 'Average time to career goal',
+      metric: '1,000+',
+      description: 'Entrepreneurial businesses supported',
     },
-    {
-      icon: <Heart size={32} />,
-      metric: '$10K',
-      description: 'Typical salary increase',
-    },
+    { icon: <Heart size={32} />, metric: '100+', description: 'Leaders developed' },
   ]
 
   return (
@@ -81,7 +54,7 @@ export default function DonatePage() {
         <div className="max-w-7xl mx-auto">
           <div className="relative overflow-hidden rounded-3xl bg-navy grid grid-cols-1 lg:grid-cols-[1.1fr_1fr]">
             <div className="relative z-10 px-6 py-14 sm:px-10 md:px-14 md:py-20">
-              <p className="font-serif text-xs font-bold uppercase tracking-[0.14em] text-accent mb-4">
+              <p className="font-serif text-xs font-bold uppercase tracking-[0.14em] text-lime-400 mb-4">
                 Donate
               </p>
               <h1 className="font-serif font-extrabold tracking-tight text-balance text-4xl md:text-5xl text-white mb-5">
@@ -106,8 +79,46 @@ export default function DonatePage() {
         </div>
       </div>
 
+      {/* Give */}
+      <Section id="give">
+        <div className="max-w-2xl mx-auto">
+          <Suspense fallback={null}>
+            <DonationStatusNotice />
+          </Suspense>
+
+          {campaign && (
+            <div className="rounded-3xl border-2 border-lime bg-lime/10 p-6 mb-10">
+              <div className="flex items-center gap-2 mb-2">
+                <Sparkles size={18} className="text-success-ink" />
+                <p className="font-serif text-xs font-bold uppercase tracking-[0.14em] text-success-ink">
+                  Featured campaign
+                  {campaign.timing ? ` · ${campaign.timing}` : ''}
+                </p>
+              </div>
+              <h2 className="font-serif font-bold text-2xl text-primary mb-2">
+                {campaign.name}
+              </h2>
+              <p className="text-muted-foreground">{campaign.description}</p>
+            </div>
+          )}
+
+          <div className="text-center mb-10">
+            <Heading level={2} className="text-primary mb-2">
+              Make a Donation
+            </Heading>
+            <p className="text-lg text-muted-foreground">
+              Give once or monthly, in shillings or dollars.
+            </p>
+          </div>
+
+          <Card variant="elevated" className="p-6 sm:p-8">
+            <DonationForm initialCampaignId={campaign?.id} />
+          </Card>
+        </div>
+      </Section>
+
       {/* Impact Summary */}
-      <Section id="impact" className="bg-white">
+      <Section bgColor="light" id="impact">
         <div className="text-center mb-16">
           <Heading level={2} className="text-primary mb-2">
             Your Impact
@@ -120,115 +131,54 @@ export default function DonatePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {impacts.map((item, idx) => (
             <Card key={idx} variant="elevated" className="text-center">
-              <div className="mb-4 p-3 w-fit rounded-lg bg-accent/10 mx-auto">
-                <div className="text-accent-ink">{item.icon}</div>
+              <div className="mb-4 p-3 w-fit rounded-2xl bg-lime/15 mx-auto text-success-ink">
+                {item.icon}
               </div>
-              <div className="text-3xl font-bold text-accent-ink mb-2">{item.metric}</div>
+              <div className="text-3xl font-serif font-extrabold text-primary mb-2 tabular-nums">
+                {item.metric}
+              </div>
               <p className="text-muted-foreground text-sm">{item.description}</p>
             </Card>
           ))}
         </div>
       </Section>
 
-      {/* Donation Tiers */}
-      <Section bgColor="light" id="tiers">
+      {/* What Your Gift Does */}
+      <Section id="levels" className="bg-white">
         <div className="text-center mb-16">
           <Heading level={2} className="text-primary mb-2">
-            Choose Your Support Level
+            What Your Gift Does
           </Heading>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            All donations are tax-deductible. Choose a recurring donation or make a one-time contribution.
+            A guide to the difference different levels of support make
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {donationTiers.map((tier, idx) => (
+          {impactLevels.map((level, idx) => (
             <Card
               key={idx}
-              variant={tier.highlight ? 'accent' : 'default'}
-              className={tier.highlight ? 'md:scale-105 shadow-lg' : ''}
+              variant="elevated"
+              className={
+                level.highlight ? 'border-t-4 border-t-lime md:scale-105' : ''
+              }
             >
               <h3 className="font-serif font-bold text-2xl text-primary mb-2">
-                {tier.title}
+                {level.title}
               </h3>
-              <div className="mb-4">
-                <div className="text-4xl font-bold text-accent-ink">{tier.amount}</div>
-                <div className="text-muted-foreground text-sm">{tier.period}</div>
-              </div>
-              <p className="text-muted-foreground mb-4">{tier.description}</p>
-              <div className="p-3 bg-accent/5 rounded-lg mb-6">
-                <p className="text-sm font-medium text-foreground">
-                  <span className="text-accent-ink font-bold">Impact:</span> {tier.impact}
-                </p>
-              </div>
-              <ul className="space-y-2 mb-6">
-                {tier.features.map((feature, fidx) => (
-                  <li key={fidx} className="flex items-center gap-2 text-sm">
-                    <CheckCircle2 size={16} className="text-secondary flex-shrink-0" />
-                    <span className="text-foreground">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button variant="primary" href="#" className="w-full justify-center">
-                Donate {tier.amount}/month
+              <p className="font-serif font-bold text-lg text-success-ink mb-4">
+                {level.guide}
+              </p>
+              <p className="text-muted-foreground mb-6">{level.impact}</p>
+              <Button
+                variant={level.highlight ? 'lime' : 'outline'}
+                href="#give"
+                className="w-full justify-center"
+              >
+                Give this amount
               </Button>
             </Card>
           ))}
-        </div>
-      </Section>
-
-      {/* One-Time Donation */}
-      <Section id="one-time" className="bg-white">
-        <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-12">
-            <Heading level={2} className="text-primary mb-2">
-              Or Make a One-Time Donation
-            </Heading>
-            <p className="text-lg text-muted-foreground">
-              Every amount helps. Choose an amount or enter your own:
-            </p>
-          </div>
-
-          <Card variant="elevated" className="p-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-              {['$10', '$25', '$50', '$100', '$250', '$500', '$1,000', 'Custom'].map((amount, idx) => (
-                <Button
-                  key={idx}
-                  variant={idx === 0 ? 'primary' : 'outline'}
-                  className="w-full justify-center"
-                >
-                  {amount}
-                </Button>
-              ))}
-            </div>
-
-            <div className="border-t border-border pt-8">
-              <h3 className="font-serif font-bold text-xl text-primary mb-4">
-                Payment Methods
-              </h3>
-              <div className="space-y-3">
-                {[
-                  { method: 'Mobile Money', desc: 'MTN Mobile Money, Airtel Money' },
-                  { method: 'Bank Transfer', desc: 'Direct bank account transfer' },
-                  { method: 'Online', desc: 'Credit/debit card via secure payment' },
-                ].map((item, idx) => (
-                  <Card key={idx} variant="default">
-                    <p className="font-semibold text-foreground">{item.method}</p>
-                    <p className="text-muted-foreground text-sm">{item.desc}</p>
-                  </Card>
-                ))}
-              </div>
-            </div>
-
-            <Button
-              variant="primary"
-              size="lg"
-              href="/contact"
-              className="w-full justify-center mt-8"
-            >
-              Complete Donation
-            </Button>
-          </Card>
         </div>
       </Section>
 
@@ -240,52 +190,43 @@ export default function DonatePage() {
           </Heading>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <Card variant="elevated">
-            <div className="w-full h-64 bg-gradient-to-br from-navy-700 to-navy-950 rounded-lg mb-4 flex items-center justify-center">
-              <div className="text-center text-white">
-                <div className="text-4xl font-bold mb-2">60%</div>
-                <div className="text-sm">Programme Delivery</div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              share: '60%',
+              title: 'Programme Delivery',
+              description:
+                'Training materials, mentorship coordination, and direct support to participants',
+            },
+            {
+              share: '25%',
+              title: 'Operations',
+              description:
+                'Staff, technology, office space, and administrative costs',
+            },
+            {
+              share: '15%',
+              title: 'Growth & Impact',
+              description:
+                'Research, monitoring & evaluation, and expansion to reach more communities',
+            },
+          ].map((item) => (
+            <Card key={item.title} variant="elevated">
+              <div className="w-full h-40 bg-gradient-to-br from-navy-700 to-navy-950 rounded-2xl mb-4 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-4xl font-serif font-extrabold text-lime mb-1 tabular-nums">
+                    {item.share}
+                  </div>
+                  <div className="text-sm text-white/80">{item.title}</div>
+                </div>
               </div>
-            </div>
-            <h3 className="font-serif font-bold text-lg text-primary mb-2">
-              Programme Delivery
-            </h3>
-            <p className="text-muted-foreground text-sm">
-              Training materials, mentorship coordination, and direct support to participants
-            </p>
-          </Card>
-
-          <Card variant="elevated">
-            <div className="w-full h-64 bg-gradient-to-br from-navy-800 to-navy-950 rounded-lg mb-4 flex items-center justify-center">
-              <div className="text-center text-white">
-                <div className="text-4xl font-bold mb-2">25%</div>
-                <div className="text-sm">Operations</div>
-              </div>
-            </div>
-            <h3 className="font-serif font-bold text-lg text-primary mb-2">
-              Operations
-            </h3>
-            <p className="text-muted-foreground text-sm">
-              Staff, technology, office space, and administrative costs
-            </p>
-          </Card>
+              <h3 className="font-serif font-bold text-lg text-primary mb-2">
+                {item.title}
+              </h3>
+              <p className="text-muted-foreground text-sm">{item.description}</p>
+            </Card>
+          ))}
         </div>
-
-        <Card variant="elevated">
-          <div className="w-full h-64 bg-gradient-to-br from-navy-600 to-navy-900 rounded-lg mb-4 flex items-center justify-center">
-            <div className="text-center text-white">
-              <div className="text-4xl font-bold mb-2">15%</div>
-              <div className="text-sm">Growth & Impact</div>
-            </div>
-          </div>
-          <h3 className="font-serif font-bold text-lg text-primary mb-2">
-            Growth & Impact Expansion
-          </h3>
-          <p className="text-muted-foreground text-sm">
-            Research, monitoring & evaluation, and expansion to reach more communities
-          </p>
-        </Card>
       </Section>
 
       {/* FAQs */}
@@ -299,25 +240,25 @@ export default function DonatePage() {
         <div className="max-w-2xl mx-auto space-y-4">
           {[
             {
-              q: 'Is my donation tax-deductible?',
-              a: 'Yes, LeadPath is a registered NGO. All donations are tax-deductible. You&apos;ll receive a tax receipt upon donation.',
+              q: 'What payment methods can I use?',
+              a: 'You can give with MTN Mobile Money, Airtel Money, or a Visa/Mastercard through Flutterwave, or with PayPal and international cards through PayPal. Mobile money and shilling payments go through Flutterwave; PayPal is processed in US dollars.',
             },
             {
-              q: 'Can I change my donation amount?',
-              a: 'Yes, you can modify or cancel your recurring donation at any time by contacting us.',
+              q: 'Can I change or cancel a monthly donation?',
+              a: 'Yes. Monthly donations can be changed or cancelled at any time — contact us with your donation reference and we will take care of it.',
             },
             {
-              q: 'How can I get updates on my donation impact?',
-              a: 'All donors receive regular impact reports. Recurring donors get personalized updates on the programmes they support.',
+              q: 'Will I get a receipt?',
+              a: 'Yes. The payment provider emails you a receipt as soon as your donation completes, and we record your reference against the campaign you chose.',
             },
             {
-              q: 'Can I donate in memory of someone?',
-              a: 'Yes! We offer memorial donations. Please contact us for details.',
+              q: 'Can I give to a specific campaign?',
+              a: 'Yes. Choose the campaign in the donation form and your gift is recorded against it. If you would rather we direct it wherever the need is greatest, choose “Where it is needed most”.',
             },
           ].map((item, idx) => (
             <Card key={idx} variant="default">
               <details className="cursor-pointer">
-                <summary className="font-semibold text-foreground hover:text-accent-ink transition-colors">
+                <summary className="font-semibold text-foreground hover:text-success-ink transition-colors">
                   {item.q}
                 </summary>
                 <p className="text-muted-foreground mt-3">{item.a}</p>
@@ -333,10 +274,11 @@ export default function DonatePage() {
           Make a Difference Today
         </Heading>
         <p className="text-white/90 max-w-2xl mx-auto mb-8 text-lg">
-          Your generosity empowers careers and inspires leaders. Thank you for supporting our mission.
+          Your generosity empowers careers and inspires leaders. Thank you for
+          supporting our mission.
         </p>
-        <Button variant="gold" href="#tiers" size="lg">
-          Choose Donation Amount
+        <Button variant="lime" href="#give" size="lg">
+          Donate Now
         </Button>
       </Section>
 
