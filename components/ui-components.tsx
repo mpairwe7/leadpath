@@ -100,7 +100,7 @@ export function Card({
 }
 
 interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'outline' | 'gold' | 'ghost-light'
+  variant?: 'primary' | 'secondary' | 'outline' | 'gold' | 'lime' | 'ghost-light'
   size?: 'sm' | 'md' | 'lg'
   className?: string
   children: ReactNode
@@ -121,6 +121,7 @@ export function Button({
   const variantClasses = {
     primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
     gold: 'bg-accent text-accent-foreground hover:bg-accent/90',
+    lime: 'bg-lime text-navy-950 hover:bg-lime-400',
     secondary: 'bg-success-ink text-white hover:bg-success-ink/90 dark:text-navy-900',
     outline:
       'border border-primary/40 text-primary hover:bg-primary/5 dark:hover:bg-primary/10',

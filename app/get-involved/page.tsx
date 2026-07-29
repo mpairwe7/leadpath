@@ -17,30 +17,43 @@ export default function GetInvolvedPage() {
     message: '',
   })
 
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [error, setError] = useState('')
+  const submitted = status === 'sent'
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real app, this would send to a backend
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setTimeout(() => {
+    setStatus('sending')
+    setError('')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, source: 'Get Involved' }),
+      })
+      const data = await response.json().catch(() => ({}))
+
+      if (!response.ok) {
+        setError(data.error ?? 'Something went wrong. Please try again.')
+        setStatus('error')
+        return
+      }
+
+      setStatus('sent')
       setFormData({ name: '', email: '', phone: '', interest: 'career', experience: '', message: '' })
-      setSubmitted(false)
-    }, 3000)
+    } catch {
+      setError('We could not reach the server. Please check your connection.')
+      setStatus('error')
+    }
   }
 
   const ways = [
-    {
-      title: 'As a Mentee',
-      description: 'Get mentored, develop your career, and join our community',
-      cta: 'Join as Mentee',
-    },
     {
       title: 'As a Mentor',
       description: 'Share your expertise and guide the next generation of leaders',
@@ -67,7 +80,7 @@ export default function GetInvolvedPage() {
         <div className="max-w-7xl mx-auto">
           <div className="relative overflow-hidden rounded-3xl bg-navy grid grid-cols-1 lg:grid-cols-[1.1fr_1fr]">
             <div className="relative z-10 px-6 py-14 sm:px-10 md:px-14 md:py-20">
-              <p className="font-serif text-xs font-bold uppercase tracking-[0.14em] text-accent mb-4">
+              <p className="font-serif text-xs font-bold uppercase tracking-[0.14em] text-lime-400 mb-4">
                 Get involved
               </p>
               <h1 className="font-serif font-extrabold tracking-tight text-balance text-4xl md:text-5xl text-white mb-5">
@@ -75,9 +88,9 @@ export default function GetInvolvedPage() {
               </h1>
               <p className="text-lg text-white/85 max-w-lg leading-relaxed">
                 Take the first step towards career growth and leadership
-                excellence. Whether you&apos;re looking to be mentored, mentor
-                others, partner with us, or support our mission, there&apos;s a
-                place for you at LeadPath.
+                excellence. Whether you&apos;re looking to mentor others, partner
+                with us, or support our mission, there&apos;s a place for you at
+                LeadPath.
               </p>
             </div>
             <div className="relative min-h-[220px]">
@@ -236,7 +249,6 @@ export default function GetInvolvedPage() {
                       <option value="career">Career Development</option>
                       <option value="leadership">Leadership Programme</option>
                       <option value="entrepreneurship">Entrepreneurship</option>
-                      <option value="mentorship">Mentorship (Mentee)</option>
                       <option value="mentor">Become a Mentor</option>
                       <option value="partner">Partnership</option>
                       <option value="donate">Donation</option>
@@ -277,12 +289,19 @@ export default function GetInvolvedPage() {
                   ></textarea>
                 </div>
 
+                {status === 'error' && (
+                  <p role="alert" className="text-sm font-medium text-destructive">
+                    {error}
+                  </p>
+                )}
+
                 <Button
-                  variant="primary"
+                  variant="lime"
                   size="lg"
                   className="w-full justify-center"
+                  disabled={status === 'sending'}
                 >
-                  Submit
+                  {status === 'sending' ? 'Sending…' : 'Submit'}
                 </Button>
 
                 <p className="text-center text-sm text-muted-foreground">

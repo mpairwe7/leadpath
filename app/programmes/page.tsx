@@ -126,7 +126,7 @@ export default function ProgrammesPage() {
       >
         <div>
           <Heading level={1} className="text-white mb-6">
-            Comprehensive <span className="text-accent">Career & Leadership</span> Programmes
+            Comprehensive <span className="text-lime">Career & Leadership</span> Programmes
           </Heading>
           <p className="text-xl text-white/90 max-w-3xl leading-relaxed">
             Choose from our diverse range of programmes designed to support you at

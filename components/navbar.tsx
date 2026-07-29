@@ -111,7 +111,7 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/donate"
-              className="px-6 py-2.5 text-sm font-serif font-bold text-accent-foreground bg-accent hover:bg-accent/90 rounded-full transition-colors"
+              className="px-6 py-2.5 text-sm font-serif font-bold text-navy-950 bg-lime hover:bg-lime-400 rounded-full transition-colors"
             >
               Donate
             </Link>
@@ -180,7 +180,7 @@ export function Navbar() {
             <div className="pt-4 mt-2 border-t border-border">
               <Link
                 href="/donate"
-                className="block px-4 py-2.5 text-sm font-serif font-bold text-center text-accent-foreground bg-accent hover:bg-accent/90 rounded-full transition-colors"
+                className="block px-4 py-2.5 text-sm font-serif font-bold text-center text-navy-950 bg-lime hover:bg-lime-400 rounded-full transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Donate

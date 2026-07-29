@@ -19,8 +19,23 @@
   --color-navy-900: #081226;
   --color-navy-950: #050d1f;
   --color-gold: #f0ad2f;
+
+  /* Lime scale — the logo green. 400/500 are vibrant fills, 600/700 are the
+     text-safe inks on light ground. See --success-ink for the theme-aware pick. */
+  --color-lime: #8dc63f;
+  --color-lime-50: #f4fbe8;
+  --color-lime-100: #e6f6c9;
+  --color-lime-200: #d0ed9f;
+  --color-lime-300: #b7e26f;
+  --color-lime-400: #a3e635;
+  --color-lime-500: #8dc63f;
+  --color-lime-600: #65a30d;
+  --color-lime-700: #4d7c0f;
+  --color-lime-800: #3f6212;
+  --color-lime-900: #2f4a0c;
+
   --color-leadpath-navy: #0b1f4b;
-  --color-leadpath-green: #2d9f4f;
+  --color-leadpath-green: #8dc63f;
   --color-leadpath-gold: #f0ad2f;
 
   /* Theme-aware ink variants (text-safe on the current ground) */
@@ -82,20 +97,20 @@
   --popover-foreground: #14213e;
   --primary: #0b1f4b;
   --primary-foreground: #ffffff;
-  --secondary: #2d9f4f;
-  --secondary-foreground: #ffffff;
+  --secondary: #65a30d;
+  --secondary-foreground: #10230a;
   --muted: #f6f5f2;
   --muted-foreground: #4e5a75;
   --accent: #f0ad2f;
   --accent-foreground: #081226;
   --accent-ink: #8a6400;
-  --success-ink: #1e7a3a;
+  --success-ink: #4d7c0f;
   --destructive: #b42331;
   --border: #e7e5df;
   --input: #f1f0ec;
   --ring: #0b1f4b;
   --chart-1: #0b1f4b;
-  --chart-2: #2d9f4f;
+  --chart-2: #65a30d;
   --chart-3: #f0ad2f;
   --chart-4: #0ea5e9;
   --chart-5: #8b5cf6;
@@ -120,20 +135,20 @@
   --popover-foreground: #e9edf6;
   --primary: #e9edf6;
   --primary-foreground: #081226;
-  --secondary: #2d9f4f;
-  --secondary-foreground: #ffffff;
+  --secondary: #8dc63f;
+  --secondary-foreground: #0a1704;
   --muted: #0f1d3a;
   --muted-foreground: #a9b4cd;
   --accent: #f0ad2f;
   --accent-foreground: #081226;
   --accent-ink: #f0ad2f;
-  --success-ink: #5bc97e;
+  --success-ink: #a3e635;
   --destructive: #f08590;
   --border: #223258;
   --input: #1b2c52;
   --ring: #f0ad2f;
   --chart-1: #97a3c0;
-  --chart-2: #5bc97e;
+  --chart-2: #a3e635;
   --chart-3: #f0ad2f;
   --chart-4: #0ea5e9;
   --chart-5: #8b5cf6;
@@ -158,20 +173,20 @@
     --popover-foreground: #e9edf6;
     --primary: #e9edf6;
     --primary-foreground: #081226;
-    --secondary: #2d9f4f;
-    --secondary-foreground: #ffffff;
+    --secondary: #8dc63f;
+    --secondary-foreground: #0a1704;
     --muted: #0f1d3a;
     --muted-foreground: #a9b4cd;
     --accent: #f0ad2f;
     --accent-foreground: #081226;
     --accent-ink: #f0ad2f;
-    --success-ink: #5bc97e;
+    --success-ink: #a3e635;
     --destructive: #f08590;
     --border: #223258;
     --input: #1b2c52;
     --ring: #f0ad2f;
     --chart-1: #97a3c0;
-    --chart-2: #5bc97e;
+    --chart-2: #a3e635;
     --chart-3: #f0ad2f;
     --chart-4: #0ea5e9;
     --chart-5: #8b5cf6;

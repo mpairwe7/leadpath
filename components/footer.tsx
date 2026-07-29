@@ -50,15 +50,15 @@ export function Footer() {
             {/* Contact Info */}
             <div className="space-y-3 text-sm">
               <div className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
-                <Mail size={16} className="text-accent" />
+                <Mail size={16} className="text-lime" />
                 <a href="mailto:info@leadpath.org">info@leadpath.org</a>
               </div>
               <div className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
-                <MessageCircle size={16} className="text-accent" />
+                <MessageCircle size={16} className="text-lime" />
                 <a href="https://wa.me/256700000000">+256 700 000 000</a>
               </div>
               <div className="flex items-center gap-2 text-white/80">
-                <MapPin size={16} className="text-accent" />
+                <MapPin size={16} className="text-lime" />
                 <span>Kampala, Uganda</span>
               </div>
             </div>
@@ -67,7 +67,7 @@ export function Footer() {
           {/* Links Columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="font-serif font-bold text-accent mb-6 text-xs uppercase tracking-[0.14em]">
+              <h4 className="font-serif font-bold text-lime mb-6 text-xs uppercase tracking-[0.14em]">
                 {category}
               </h4>
               <ul className="space-y-3 text-sm">
