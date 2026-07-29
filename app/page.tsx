@@ -22,33 +22,34 @@ import {
 const heroStats = [
   { value: '2,500+', label: 'Members empowered', highlight: false },
   { value: '85%', label: 'Career success rate', highlight: true },
-  { value: '500+', label: 'Mentors connected', highlight: false },
+  { value: '1,000+', label: 'Entrepreneurial businesses supported', highlight: false },
+  { value: '100+', label: 'Leaders developed', highlight: false },
 ]
 
 const pillars = [
   {
     number: '01',
-    icon: <Briefcase size={28} />,
-    title: 'Discover',
-    href: '/career',
+    icon: <TrendingUp size={28} />,
+    title: 'Leadership',
+    href: '/leadership',
     description:
-      'Uncover your unique talents, interests, and career potential through guided exploration and assessment programs.',
+      'Before leading organizations, young people must first learn to lead themselves. We build the mindset, skills, and confidence to influence others and make informed decisions.',
   },
   {
     number: '02',
-    icon: <TrendingUp size={28} />,
-    title: 'Develop',
-    href: '/leadership',
+    icon: <Briefcase size={28} />,
+    title: 'Career Development',
+    href: '/career',
     description:
-      'Build essential skills through hands-on training, mentorship, and professional development programs tailored to your goals.',
+      'From choosing the right academic path to securing employment and excelling at work — we help participants align their passions with market opportunities.',
   },
   {
     number: '03',
     icon: <Lightbulb size={28} />,
-    title: 'Lead',
+    title: 'Entrepreneurship',
     href: '/entrepreneurship',
     description:
-      'Step into leadership roles and make a meaningful impact in your organization and community with confidence and vision.',
+      'We inspire young people to transform innovative ideas into viable businesses that solve real problems and create lasting value.',
   },
 ]
 
@@ -74,27 +75,31 @@ export default function Page() {
               className="absolute inset-0 opacity-25"
               style={{
                 background:
-                  'radial-gradient(120% 90% at 90% 0%, rgba(240,173,47,0.5), transparent 55%)',
+                  'radial-gradient(110% 80% at 92% 0%, rgba(141,198,63,0.65), transparent 58%), radial-gradient(90% 70% at 70% 100%, rgba(240,173,47,0.35), transparent 60%)',
               }}
             />
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 items-center px-6 py-16 sm:px-10 md:px-14 md:py-20 lg:py-24">
               <div className="max-w-xl">
-                <p className="font-serif text-xs font-bold uppercase tracking-[0.14em] text-accent mb-4">
-                  Career &amp; leadership network
+                <p className="font-serif text-xs font-bold uppercase tracking-[0.14em] text-lime-400 mb-4">
+                  Career, entrepreneurship &amp; leadership network
                 </p>
-                <h1 className="font-serif font-extrabold tracking-tight text-balance text-4xl md:text-5xl lg:text-6xl text-white mb-5">
-                  Empowering careers.
+                <h1 className="font-serif font-extrabold tracking-tight text-balance text-4xl md:text-5xl lg:text-6xl text-white mb-4">
+                  Igniting ideas.
                   <br />
                   Inspiring leaders.
                 </h1>
+                <p className="font-serif text-lg md:text-xl font-semibold text-lime-300 mb-5">
+                  Your shoulder on the journey to success.
+                </p>
                 <p className="text-lg text-white/85 mb-8 max-w-lg leading-relaxed">
                   LeadPath discovers talent, develops skills, and builds the next
-                  generation of leaders through mentorship, career guidance, and
-                  entrepreneurial support.
+                  generation of leaders through guidance on trendy career choices,
+                  university placements, mentorship, job shadowing, career
+                  guidance, and entrepreneurial support.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button variant="gold" href="/get-involved" size="lg">
+                  <Button variant="lime" href="/get-involved" size="lg">
                     Get started
                     <ArrowRight size={20} />
                   </Button>
@@ -105,22 +110,24 @@ export default function Page() {
               </div>
 
               {/* Floating glass stats */}
-              <div className="flex flex-row lg:flex-col flex-wrap gap-4 lg:pr-2">
+              <div className="grid grid-cols-2 gap-4 lg:w-[400px] lg:pr-2">
                 {heroStats.map((stat, idx) => (
                   <div
                     key={stat.label}
-                    className={`rounded-2xl border border-white/25 bg-white/10 backdrop-blur-md px-6 py-4 min-w-[170px] ${
-                      idx === 1 ? 'lg:-translate-x-6' : ''
+                    className={`rounded-2xl border border-white/25 bg-white/10 backdrop-blur-md px-5 py-4 ${
+                      idx % 2 === 1 ? 'lg:translate-y-5' : ''
                     }`}
                   >
                     <div
                       className={`font-serif font-extrabold tracking-tight text-2xl tabular-nums ${
-                        stat.highlight ? 'text-accent' : 'text-white'
+                        stat.highlight ? 'text-lime-400' : 'text-white'
                       }`}
                     >
                       {stat.value}
                     </div>
-                    <div className="text-xs text-white/75 mt-0.5">{stat.label}</div>
+                    <div className="text-xs text-white/75 mt-0.5 leading-snug">
+                      {stat.label}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -132,12 +139,15 @@ export default function Page() {
       {/* Three Pillars Section — a real sequence, so it stays numbered */}
       <Section id="pillars">
         <div className="max-w-2xl mb-14">
-          <Heading level={2} eyebrow="Our three core pillars">
-            Discover, develop, lead
+          <Heading level={2} eyebrow="Our pillars">
+            Leadership, career, entrepreneurship
           </Heading>
           <p className="text-lg text-muted-foreground mt-4">
-            One path, three stages. Every LeadPath programme moves you through
-            the same journey — from knowing yourself to leading others.
+            We believe every young person has the potential to become an
+            exceptional leader, build a fulfilling career, and create meaningful
+            businesses that transform communities. Every participant is
+            challenged to think critically, grow confidently, and take purposeful
+            action.
           </p>
         </div>
 
@@ -145,7 +155,7 @@ export default function Page() {
           {pillars.map((pillar) => (
             <Card key={pillar.number} variant="default" className="group">
               <div className="flex items-center justify-between mb-6">
-                <div className="p-3.5 w-fit rounded-2xl bg-primary/5 dark:bg-primary/10 text-primary group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
+                <div className="p-3.5 w-fit rounded-2xl bg-lime/15 text-success-ink group-hover:bg-lime group-hover:text-navy-950 transition-colors">
                   {pillar.icon}
                 </div>
                 <span className="font-serif font-extrabold text-accent-ink/70 tabular-nums">
@@ -225,7 +235,7 @@ export default function Page() {
             description="Connect with experienced professionals who can guide your growth and help you navigate challenges."
             href="/mentorship"
             status="Matching"
-            meta={['Ongoing', '1-on-1', '500+ mentors']}
+            meta={['Ongoing', '1-on-1', '1,000+ mentors']}
             features={['One-on-one mentoring', 'Peer learning', 'Skill building']}
           />
         </div>
@@ -237,7 +247,7 @@ export default function Page() {
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-navy-800 to-navy-950 px-6 py-14 sm:px-10 md:px-14 md:py-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <p className="font-serif text-xs font-bold uppercase tracking-[0.14em] text-accent mb-4">
+                <p className="font-serif text-xs font-bold uppercase tracking-[0.14em] text-lime-400 mb-4">
                   Member stories
                 </p>
                 <blockquote className="font-serif font-bold tracking-tight text-2xl md:text-3xl text-white text-balance leading-snug mb-6">
@@ -267,7 +277,7 @@ export default function Page() {
                   or become one of them.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button variant="gold" href="/get-involved" size="md">
+                  <Button variant="lime" href="/get-involved" size="md">
                     Join the community
                   </Button>
                   <Button variant="ghost-light" href="/about" size="md">
@@ -290,7 +300,7 @@ export default function Page() {
             Take the next step in your career and leadership journey.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="primary" href="/get-involved" size="lg">
+            <Button variant="lime" href="/get-involved" size="lg">
               Join our community
             </Button>
             <Button variant="outline" href="/donate" size="lg">

@@ -60,7 +60,7 @@ export default function MentorshipPage() {
       <Section bgColor="primary" className="pt-32 pb-16 md:pt-40 md:pb-20" id="hero">
         <div>
           <Heading level={1} className="text-white mb-6">
-            Grow With <span className="text-accent">Expert Mentorship</span>
+            Grow With <span className="text-lime">Expert Mentorship</span>
           </Heading>
           <p className="text-xl text-white/90 max-w-3xl leading-relaxed">
             Connect with experienced mentors who have walked the path you&apos;re on and can help you navigate challenges and seize opportunities.
@@ -179,13 +179,14 @@ export default function MentorshipPage() {
       {/* CTA */}
       <Section bgColor="primary" className="text-center py-16">
         <Heading level={2} className="text-white mb-6">
-          Ready to Find Your Mentor?
+          Ready to Mentor the Next Generation?
         </Heading>
         <p className="text-white/90 max-w-2xl mx-auto mb-8 text-lg">
-          Join our mentorship programme and accelerate your career growth with guidance from experienced professionals.
+          Share your experience with young people building their careers,
+          businesses, and confidence to lead.
         </p>
-        <Button variant="gold" href="/get-involved" size="lg">
-          Find a Mentor Today
+        <Button variant="lime" href="/get-involved" size="lg">
+          Become a Mentor
         </Button>
       </Section>
 

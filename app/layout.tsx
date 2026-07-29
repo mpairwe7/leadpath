@@ -16,13 +16,15 @@ const archivo = Archivo({
 })
 
 export const metadata: Metadata = {
-  title: 'LeadPath - Career and Leadership Network',
-  description: 'Empowering careers, inspiring leaders. Discover, develop, and lead with LeadPath&apos;s career and leadership network.',
+  title: 'LeadPath — Career, Entrepreneurship & Leadership Network',
+  description:
+    'Igniting ideas, inspiring leaders. LeadPath discovers talent, develops skills, and builds the next generation of leaders through career guidance, university placements, mentorship, and entrepreneurial support.',
   generator: 'v0.app',
   keywords: ['career development', 'leadership', 'mentorship', 'entrepreneurship', 'professional growth'],
   openGraph: {
-    title: 'LeadPath - Career and Leadership Network',
-    description: 'Empowering careers, inspiring leaders. Discover, develop, and lead.',
+    title: 'LeadPath — Career, Entrepreneurship & Leadership Network',
+    description:
+      'Igniting ideas, inspiring leaders. Your shoulder on the journey to success.',
     type: 'website',
     locale: 'en_US',
     images: [

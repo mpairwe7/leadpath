@@ -6,39 +6,43 @@ import { Section, Heading, Card, Button } from '@/components/ui-components'
 import { Users, Lightbulb, Award, TrendingUp, CheckCircle2 } from 'lucide-react'
 
 export default function LeadershipPage() {
-  const competencies = [
-    { title: 'Vision Setting', description: 'Define inspiring goals and direction for your team' },
-    { title: 'People Development', description: 'Coach and mentor your team to reach their potential' },
-    { title: 'Decision Making', description: 'Make strategic decisions with confidence and clarity' },
-    { title: 'Change Management', description: 'Lead organizational change effectively' },
-    { title: 'Communication', description: 'Influence and inspire through powerful communication' },
-    { title: 'Emotional Intelligence', description: 'Understand and manage emotions in yourself and others' },
+  const focusAreas = [
+    'Self-awareness and personal leadership',
+    'Ethical and values-based leadership',
+    'Communication and public speaking',
+    'Critical thinking and data-driven decision-making',
+    'Project planning and execution',
+    'Teamwork and collaboration',
+    'Problem-solving and innovation',
+    'Entrepreneurial mindset development',
+    'Emotional intelligence and resilience',
+    'Leadership in the digital age',
   ]
 
-  const programmes = [
+  const methods = [
     {
       icon: <Award size={32} />,
-      title: 'Leadership Essentials',
-      description: 'Foundation programme for emerging and developing leaders',
-      modules: ['Leadership fundamentals', 'Emotional intelligence', 'Team dynamics', 'Ethics & integrity'],
+      title: 'Experiential Learning',
+      description:
+        'Participants learn by doing — leading real projects and reflecting on what worked and what did not.',
     },
     {
       icon: <TrendingUp size={32} />,
-      title: 'Executive Presence',
-      description: 'Develop the presence and impact of a senior leader',
-      modules: ['Strategic thinking', 'Executive communication', 'Presence & influence', 'Stakeholder management'],
+      title: 'Case Studies',
+      description:
+        'Real decisions faced by real leaders, unpacked so participants can reason through the trade-offs themselves.',
     },
     {
       icon: <Users size={32} />,
-      title: 'Transformational Leadership',
-      description: 'Learn to inspire change and drive organizational transformation',
-      modules: ['Change leadership', 'Innovation management', 'Culture building', 'Organizational development'],
+      title: 'Simulations',
+      description:
+        'Low-stakes practice at high-stakes situations — negotiation, crisis response, and team conflict.',
     },
     {
       icon: <Lightbulb size={32} />,
-      title: 'Executive Coaching',
-      description: 'One-on-one coaching with experienced executive coaches',
-      modules: ['360 feedback', 'Personalized coaching', 'Leadership plan', 'Progress tracking'],
+      title: 'Mentorship',
+      description:
+        'Ongoing guidance from experienced leaders who have navigated the same challenges.',
     },
   ]
 
@@ -50,93 +54,102 @@ export default function LeadershipPage() {
       <Section bgColor="primary" className="pt-32 pb-16 md:pt-40 md:pb-20" id="hero">
         <div>
           <Heading level={1} className="text-white mb-6">
-            Develop Your <span className="text-accent">Leadership Excellence</span>
+            Learn to Lead <span className="text-lime">Yourself First</span>
           </Heading>
           <p className="text-xl text-white/90 max-w-3xl leading-relaxed">
-            Transform yourself into an inspiring and effective leader who drives results and develops others.
+            Leadership is the foundation upon which successful careers,
+            businesses, and communities are built. Before leading organisations
+            or businesses, young people must first learn to lead themselves.
           </p>
         </div>
       </Section>
 
-      {/* Leadership Competencies */}
-      <Section id="competencies" className="bg-white">
+      {/* Why Leadership */}
+      <Section id="why" className="bg-white">
+        <div className="max-w-3xl">
+          <Heading level={2} className="text-primary mb-6">
+            Why Leadership
+          </Heading>
+          <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+            <p>
+              Our leadership programmes equip participants with the mindset,
+              skills, and confidence needed to influence others, solve problems,
+              and make informed decisions in an increasingly complex world.
+            </p>
+            <p>
+              Through experiential learning, case studies, simulations, and
+              mentorship, participants develop practical leadership competencies
+              that prepare them for lifelong success.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* Focus Areas */}
+      <Section bgColor="light" id="focus">
         <div className="text-center mb-16">
           <Heading level={2} className="text-primary mb-2">
-            Core Leadership Competencies
+            What Our Leadership Training Covers
           </Heading>
-          <p className="text-lg text-muted-foreground">
-            Six essential skills that define modern leaders
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Ten areas that together turn potential into practised capability
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {competencies.map((comp, idx) => (
-            <Card key={idx} variant="elevated">
-              <div className="mb-4 w-1.5 h-1.5 rounded-full bg-accent"></div>
-              <h3 className="font-serif font-bold text-xl text-primary mb-2">{comp.title}</h3>
-              <p className="text-muted-foreground">{comp.description}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {focusAreas.map((area) => (
+            <Card
+              key={area}
+              variant="elevated"
+              className="flex items-start gap-3 border-l-4 border-l-lime"
+            >
+              <CheckCircle2
+                size={20}
+                className="text-success-ink flex-shrink-0 mt-0.5"
+              />
+              <span className="font-medium text-foreground">{area}</span>
             </Card>
           ))}
         </div>
       </Section>
 
-      {/* Programmes */}
-      <Section bgColor="light" id="programmes">
+      {/* How We Teach */}
+      <Section id="approach" className="bg-white">
         <div className="text-center mb-16">
           <Heading level={2} className="text-primary mb-2">
-            Leadership Development Programmes
+            How We Teach It
           </Heading>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose the programme that matches your current level and career aspirations
+            Practical competencies are built through practice, not lectures
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {programmes.map((prog, idx) => (
-            <Card key={idx} variant="elevated" className="group">
-              <div className="mb-4 p-4 w-fit rounded-lg bg-accent/10 group-hover:bg-accent group-hover:text-white transition-colors">
-                {prog.icon}
+          {methods.map((method) => (
+            <Card key={method.title} variant="elevated" className="group">
+              <div className="mb-4 p-4 w-fit rounded-2xl bg-lime/15 text-success-ink group-hover:bg-lime group-hover:text-navy-950 transition-colors">
+                {method.icon}
               </div>
-              <h3 className="font-serif font-bold text-2xl text-primary mb-2 group-hover:text-accent-ink transition-colors">
-                {prog.title}
+              <h3 className="font-serif font-bold text-2xl text-primary mb-2">
+                {method.title}
               </h3>
-              <p className="text-muted-foreground mb-6">{prog.description}</p>
-              <div className="space-y-2 mb-6">
-                {prog.modules.map((module, midx) => (
-                  <div key={midx} className="flex items-center gap-2 text-sm">
-                    <CheckCircle2 size={16} className="text-secondary flex-shrink-0" />
-                    <span className="text-foreground">{module}</span>
-                  </div>
-                ))}
-              </div>
-              <Button variant="primary" href="/get-involved" className="text-sm">
-                Explore
-              </Button>
+              <p className="text-muted-foreground">{method.description}</p>
             </Card>
           ))}
         </div>
       </Section>
 
-      {/* Learning Approach */}
-      <Section id="approach" className="bg-white">
-        <div className="text-center mb-16">
-          <Heading level={2} className="text-primary">
-            Our Learning Approach
+      {/* Outcome */}
+      <Section bgColor="light" id="outcome">
+        <div className="max-w-3xl mx-auto text-center">
+          <Heading level={2} className="text-primary mb-6">
+            What You Leave With
           </Heading>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {[
-            { title: 'Self-Assessment', desc: '360 feedback and personality assessments' },
-            { title: 'Learning', desc: 'Interactive workshops and e-learning modules' },
-            { title: 'Application', desc: 'Real-world projects and case studies' },
-            { title: 'Accountability', desc: 'Coaching and peer accountability groups' },
-          ].map((item, idx) => (
-            <Card key={idx} variant="default">
-              <h3 className="font-serif font-bold text-lg text-primary mb-3">{item.title}</h3>
-              <p className="text-muted-foreground text-sm">{item.desc}</p>
-            </Card>
-          ))}
+          <p className="text-xl text-muted-foreground leading-relaxed">
+            By the end of the programme, participants are equipped to lead with
+            integrity, inspire others, and create positive impact wherever they
+            serve.
+          </p>
         </div>
       </Section>
 
@@ -146,9 +159,10 @@ export default function LeadershipPage() {
           Ready to Lead with Excellence?
         </Heading>
         <p className="text-white/90 max-w-2xl mx-auto mb-8 text-lg">
-          Join our leadership development programmes and unlock your leadership potential.
+          Join our leadership development programmes and unlock your leadership
+          potential.
         </p>
-        <Button variant="gold" href="/get-involved" size="lg">
+        <Button variant="lime" href="/get-involved" size="lg">
           Start Leading Today
         </Button>
       </Section>
