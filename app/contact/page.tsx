@@ -1,37 +1,13 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
-import { Section, Heading, Card, Button } from '@/components/ui-components'
-import { Mail, MessageCircle, MapPin, Phone, Clock, CheckCircle2 } from 'lucide-react'
+import { ContactForm } from '@/components/contact-form'
+import { Section, Heading, Card } from '@/components/ui-components'
+import { Mail, MessageCircle, MapPin, Phone, Clock } from 'lucide-react'
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  })
-
-  const [submitted, setSubmitted] = useState(false)
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Contact form submitted:', formData)
-    setSubmitted(true)
-    setTimeout(() => {
-      setFormData({ name: '', email: '', subject: '', message: '' })
-      setSubmitted(false)
-    }, 3000)
-  }
-
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
@@ -41,7 +17,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto">
           <div className="relative overflow-hidden rounded-3xl bg-navy grid grid-cols-1 lg:grid-cols-[1.1fr_1fr]">
             <div className="relative z-10 px-6 py-14 sm:px-10 md:px-14 md:py-20">
-              <p className="font-serif text-xs font-bold uppercase tracking-[0.14em] text-accent mb-4">
+              <p className="font-serif text-xs font-bold uppercase tracking-[0.14em] text-lime-400 mb-4">
                 Contact
               </p>
               <h1 className="font-serif font-extrabold tracking-tight text-balance text-4xl md:text-5xl text-white mb-5">
@@ -130,85 +106,7 @@ export default function ContactPage() {
               Send us a Message
             </Heading>
             <Card variant="elevated" className="p-8">
-              {submitted ? (
-                <div className="text-center py-8">
-                  <div className="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle2 size={32} className="text-secondary" />
-                  </div>
-                  <h3 className="font-serif font-bold text-2xl text-primary mb-2">
-                    Message Sent!
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Thank you for reaching out. We&apos;ll get back to you as soon as possible.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
-                      placeholder="Your name"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Subject *
-                    </label>
-                    <input
-                      type="text"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
-                      placeholder="How can we help?"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Message *
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground resize-none"
-                      placeholder="Your message..."
-                    ></textarea>
-                  </div>
-
-                  <Button variant="primary" size="lg" className="w-full justify-center">
-                    Send Message
-                  </Button>
-                </form>
-              )}
+              <ContactForm source="Contact" />
             </Card>
           </div>
 
@@ -227,11 +125,9 @@ export default function ContactPage() {
                   <p className="text-muted-foreground">9:00 AM - 5:00 PM EAT</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-foreground">Saturday</p>
-                  <p className="text-muted-foreground">10:00 AM - 2:00 PM EAT</p>
-                </div>
-                <div>
-                  <p className="font-semibold text-foreground">Sunday</p>
+                  <p className="font-semibold text-foreground">
+                    Saturday &amp; Sunday
+                  </p>
                   <p className="text-muted-foreground">Closed</p>
                 </div>
               </div>

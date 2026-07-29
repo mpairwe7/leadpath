@@ -2,7 +2,8 @@
 
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
-import { Section, Heading, Card, Button } from '@/components/ui-components'
+import { ContactForm } from '@/components/contact-form'
+import { Section, Heading, Card } from '@/components/ui-components'
 import { Building2, Handshake, Award, Users, CheckCircle2 } from 'lucide-react'
 
 export default function PartnersPage() {
@@ -33,14 +34,7 @@ export default function PartnersPage() {
     },
   ]
 
-  const currentPartners = [
-    'TechHub Africa',
-    'East Africa Tech Alliance',
-    'Makerere University',
-    'Uganda National Youth Council',
-    'KLA',
-    'Kabira Hub',
-  ]
+  const currentPartners = ['Junior Achievement', 'Kampala International University']
 
   return (
     <main className="min-h-screen bg-background">
@@ -50,7 +44,7 @@ export default function PartnersPage() {
       <Section bgColor="primary" className="pt-32 pb-16 md:pt-40 md:pb-20" id="hero">
         <div>
           <Heading level={1} className="text-white mb-6">
-            Partner With <span className="text-accent">LeadPath</span>
+            Partner With <span className="text-lime">LeadPath</span>
           </Heading>
           <p className="text-xl text-white/90 max-w-3xl leading-relaxed">
             Join us in our mission to empower careers and inspire leaders. Together, we can create greater impact in the community.
@@ -72,10 +66,10 @@ export default function PartnersPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {partnerships.map((partner, idx) => (
             <Card key={idx} variant="elevated" className="group">
-              <div className="mb-4 p-4 w-fit rounded-lg bg-accent/10 group-hover:bg-accent group-hover:text-white transition-colors">
+              <div className="mb-4 p-4 w-fit rounded-2xl bg-lime/15 text-success-ink group-hover:bg-lime group-hover:text-navy-950 transition-colors">
                 {partner.icon}
               </div>
-              <h3 className="font-serif font-bold text-2xl text-primary mb-2 group-hover:text-accent-ink transition-colors">
+              <h3 className="font-serif font-bold text-2xl text-primary mb-2 group-hover:text-success-ink transition-colors">
                 {partner.title}
               </h3>
               <p className="text-muted-foreground mb-6">{partner.description}</p>
@@ -131,54 +125,60 @@ export default function PartnersPage() {
           </Heading>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
           {currentPartners.map((partner, idx) => (
-            <Card key={idx} variant="elevated" className="flex items-center justify-center min-h-32">
-              <p className="font-semibold text-center text-foreground">{partner}</p>
+            <Card
+              key={idx}
+              variant="elevated"
+              className="flex items-center justify-center min-h-32 border-t-4 border-t-lime"
+            >
+              <p className="font-serif font-bold text-lg text-center text-foreground">
+                {partner}
+              </p>
             </Card>
           ))}
         </div>
       </Section>
 
-      {/* Partnership Process */}
-      <Section bgColor="light" id="process">
-        <div className="text-center mb-16">
-          <Heading level={2} className="text-primary">
-            Partnership Process
-          </Heading>
-        </div>
+      {/* Get in Touch — partners can enquire without leaving this page */}
+      <Section bgColor="light" id="get-in-touch">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 items-start">
+          <div className="lg:sticky lg:top-28">
+            <Heading level={2} className="text-primary mb-4">
+              Get in Touch
+            </Heading>
+            <p className="text-lg text-muted-foreground mb-6">
+              Tell us about your organisation and what you would like to achieve
+              together. We will get back to you within two business days.
+            </p>
+            <div className="space-y-3">
+              {[
+                'No commitment — start with a conversation',
+                'Partnership models tailored to your goals',
+                'Direct line to our partnerships team',
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-3">
+                  <CheckCircle2
+                    size={20}
+                    className="text-success-ink flex-shrink-0 mt-0.5"
+                  />
+                  <p className="text-muted-foreground">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {[
-            { step: '1', title: 'Discuss', desc: 'Explore partnership opportunities' },
-            { step: '2', title: 'Design', desc: 'Co-create partnership model' },
-            { step: '3', title: 'Execute', desc: 'Launch partnership initiatives' },
-            { step: '4', title: 'Measure', desc: 'Track impact and outcomes' },
-          ].map((item, idx) => (
-            <Card key={idx} variant="default">
-              <div className="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold mb-3">
-                {item.step}
-              </div>
-              <h3 className="font-serif font-bold text-lg text-primary mb-2">
-                {item.title}
-              </h3>
-              <p className="text-muted-foreground text-sm">{item.desc}</p>
-            </Card>
-          ))}
+          <Card variant="elevated" className="p-8">
+            <ContactForm
+              source="Partners"
+              includeOrganisation
+              subjectPlaceholder="Partnership enquiry"
+              messagePlaceholder="Tell us about your organisation and the partnership you have in mind..."
+              submitLabel="Send Partnership Enquiry"
+              successMessage="Thank you for your interest in partnering with LeadPath. Our partnerships team will be in touch shortly."
+            />
+          </Card>
         </div>
-      </Section>
-
-      {/* CTA */}
-      <Section bgColor="primary" className="text-center py-16">
-        <Heading level={2} className="text-white mb-6">
-          Let&apos;s Create Impact Together
-        </Heading>
-        <p className="text-white/90 max-w-2xl mx-auto mb-8 text-lg">
-          Ready to partner with LeadPath? Contact us to discuss how we can work together.
-        </p>
-        <Button variant="gold" href="/contact" size="lg">
-          Get in Touch
-        </Button>
       </Section>
 
       <Footer />
