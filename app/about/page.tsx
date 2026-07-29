@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { Section, Heading, Card, Button } from '@/components/ui-components'
@@ -56,7 +57,7 @@ export default function AboutPage() {
       name: 'Scovia Kampire',
       title: 'Partnerships Lead',
       bio: 'An administrative, partnership, and project management professional with over five years supporting health and development programmes in Rwanda. Scovia holds a Global MBA in Business Sustainability and Social Entrepreneurship from the University of Rwanda and a bachelor’s degree in Finance. She is passionate about building partnerships, strengthening organisational effectiveness, and advancing sustainable community development through collaborative leadership and innovation.',
-      image: '/placeholder-user.jpg',
+      image: '/scovia.jpg',
     },
   ]
 
@@ -277,13 +278,15 @@ export default function AboutPage() {
               variant="elevated"
               className="group flex flex-col items-center text-center"
             >
+              {/* next/image so the portrait is served as AVIF/WebP at the
+                  exact 160px the circle needs, not as a full-size JPEG. */}
               <div className="relative mb-4 w-40 h-40 rounded-full overflow-hidden shadow-xl ring-4 ring-lime/40 group-hover:ring-lime transition-all duration-300 flex-shrink-0">
-                <img
+                <Image
                   src={member.image}
                   alt={`${member.name}, ${member.title}`}
-                  width={160}
-                  height={160}
-                  className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
+                  fill
+                  sizes="160px"
+                  className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <h3 className="font-serif font-bold text-lg text-primary mb-1">
