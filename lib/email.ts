@@ -1,3 +1,5 @@
+import nodemailer from 'nodemailer'
+
 // Resend is called over its REST API so the project carries no SDK dependency.
 const RESEND_ENDPOINT = 'https://api.resend.com/emails'
 
@@ -33,7 +35,24 @@ export type SendEmailResult =
   | { ok: true }
   | { ok: false; reason: 'unconfigured' | 'failed' }
 
-export async function sendEmail({
+export async function sendEmail(options: SendEmailOptions): Promise<SendEmailResult> {
+  // Resend is preferred when configured; it is a transactional-mail API
+  // rather than a personal inbox, so it does not risk Gmail's sending
+  // limits or spam heuristics. Falls back to the Gmail SMTP account already
+  // in use for the site (SMTP_HOST/PORT/USER/PASS) when no Resend key is set.
+  if (process.env.RESEND_API_KEY) {
+    return sendViaResend(options)
+  }
+  if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+    return sendViaSmtp(options)
+  }
+  console.error(
+    'Email is not configured. Set RESEND_API_KEY and CONTACT_FROM_EMAIL, or SMTP_HOST/SMTP_USER/SMTP_PASS.',
+  )
+  return { ok: false, reason: 'unconfigured' }
+}
+
+async function sendViaResend({
   to,
   subject,
   html,
@@ -45,9 +64,7 @@ export async function sendEmail({
   const recipient = to ?? process.env.CONTACT_TO_EMAIL ?? DEFAULT_RECIPIENT
 
   if (!apiKey || !from) {
-    console.error(
-      'Email is not configured. Set RESEND_API_KEY and CONTACT_FROM_EMAIL.',
-    )
+    console.error('Email is not configured. Set RESEND_API_KEY and CONTACT_FROM_EMAIL.')
     return { ok: false, reason: 'unconfigured' }
   }
 
@@ -80,6 +97,52 @@ export async function sendEmail({
     return { ok: true }
   } catch (error) {
     console.error('Failed to reach Resend:', error)
+    return { ok: false, reason: 'failed' }
+  }
+}
+
+let smtpTransport: ReturnType<typeof nodemailer.createTransport> | null = null
+
+function getSmtpTransport() {
+  if (!smtpTransport) {
+    smtpTransport = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT) || 587,
+      // 465 is implicit TLS; every other port (587, 25) starts plain and upgrades via STARTTLS.
+      secure: Number(process.env.SMTP_PORT) === 465,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    })
+  }
+  return smtpTransport
+}
+
+async function sendViaSmtp({
+  to,
+  subject,
+  html,
+  text,
+  replyTo,
+}: SendEmailOptions): Promise<SendEmailResult> {
+  // Gmail rejects a From address that is not the authenticated account (or a
+  // verified alias of it), so CONTACT_FROM_EMAIL is ignored on this path.
+  const from = process.env.SMTP_USER as string
+  const recipient = to ?? process.env.CONTACT_TO_EMAIL ?? DEFAULT_RECIPIENT
+
+  try {
+    await getSmtpTransport().sendMail({
+      from: `LeadPath <${from}>`,
+      to: recipient,
+      subject,
+      html,
+      text,
+      ...(replyTo ? { replyTo } : {}),
+    })
+    return { ok: true }
+  } catch (error) {
+    console.error('Failed to send via SMTP:', error)
     return { ok: false, reason: 'failed' }
   }
 }
