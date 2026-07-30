@@ -95,8 +95,8 @@ export default function GetInvolvedPage() {
             </div>
             <div className="relative min-h-[220px]">
               <Image
-                src="/african-team-collaboration.png"
-                alt="LeadPath members working together"
+                src="/uganda-digital-skills.jpg"
+                alt="Young Ugandans learning digital skills together in Kampala"
                 fill
                 sizes="(max-width: 1024px) 100vw, 640px"
                 className="object-cover"

@@ -209,7 +209,8 @@ interface ProgramCardProps {
   icon: ReactNode
   title: string
   description: string
-  href: string
+  /** Omit on cards that describe part of a programme rather than a destination. */
+  href?: string
   features?: string[]
   meta?: string[]
   status?: string
@@ -262,13 +263,15 @@ export function ProgramCard({
           ))}
         </ul>
       )}
-      <a
-        href={href}
-        className="mt-auto inline-flex items-center gap-2 text-accent-ink font-serif font-bold hover:gap-3 transition-all"
-      >
-        Learn More
-        <span aria-hidden="true">→</span>
-      </a>
+      {href && (
+        <a
+          href={href}
+          className="mt-auto inline-flex items-center gap-2 text-accent-ink font-serif font-bold hover:gap-3 transition-all"
+        >
+          Learn More
+          <span aria-hidden="true">→</span>
+        </a>
+      )}
     </Card>
   )
 }

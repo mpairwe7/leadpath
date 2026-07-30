@@ -1,6 +1,11 @@
 // Resend is called over its REST API so the project carries no SDK dependency.
 const RESEND_ENDPOINT = 'https://api.resend.com/emails'
 
+// LeadPath's public enquiries inbox, also shown in the footer and on /contact.
+// Used when CONTACT_TO_EMAIL is not set so a missing env var cannot silently
+// send enquiries to the wrong place.
+const DEFAULT_RECIPIENT = 'leadpath360@gmail.com'
+
 export function escapeHtml(value: string): string {
   return value.replace(
     /[&<>"']/g,
@@ -37,11 +42,11 @@ export async function sendEmail({
 }: SendEmailOptions): Promise<SendEmailResult> {
   const apiKey = process.env.RESEND_API_KEY
   const from = process.env.CONTACT_FROM_EMAIL
-  const recipient = to ?? process.env.CONTACT_TO_EMAIL
+  const recipient = to ?? process.env.CONTACT_TO_EMAIL ?? DEFAULT_RECIPIENT
 
-  if (!apiKey || !from || !recipient) {
+  if (!apiKey || !from) {
     console.error(
-      'Email is not configured. Set RESEND_API_KEY, CONTACT_FROM_EMAIL and CONTACT_TO_EMAIL.',
+      'Email is not configured. Set RESEND_API_KEY and CONTACT_FROM_EMAIL.',
     )
     return { ok: false, reason: 'unconfigured' }
   }

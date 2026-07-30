@@ -67,8 +67,8 @@ export default function DonatePage() {
             </div>
             <div className="relative min-h-[220px]">
               <Image
-                src="/african-career-growth.png"
-                alt="A LeadPath member advancing their career"
+                src="/uganda-classroom.jpg"
+                alt="Students in a lecture hall at Makerere University, Kampala, Uganda"
                 fill
                 sizes="(max-width: 1024px) 100vw, 640px"
                 className="object-cover"

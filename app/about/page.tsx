@@ -152,9 +152,9 @@ export default function AboutPage() {
           </div>
           <div className="relative h-96 lg:h-[560px] rounded-3xl overflow-hidden shadow-lg lg:sticky lg:top-28">
             <img
-              src="/african-career-growth.png"
-              alt="African professionals in career development"
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              src="/uganda-training-focus.jpg"
+              alt="Participants concentrating during a youth training session in Kampala, Uganda"
+              className="w-full h-full object-cover object-[center_45%] hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/25 to-lime/15" />
           </div>
@@ -308,8 +308,8 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative h-96 rounded-3xl overflow-hidden shadow-lg order-2 lg:order-1">
             <img
-              src="/african-team-collaboration.png"
-              alt="African professionals collaborating and mentoring"
+              src="/uganda-graduation.jpg"
+              alt="Ugandan university graduates at their 2025 graduation ceremony"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-lime/25 to-accent/10" />

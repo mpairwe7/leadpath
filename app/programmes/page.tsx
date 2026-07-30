@@ -19,6 +19,8 @@ export default function ProgrammesPage() {
     {
       category: 'Career Development',
       description: 'Navigate your career path with confidence and clarity',
+      href: '/career',
+      cta: 'Explore Career Development',
       items: [
         {
           icon: <Target size={24} />,
@@ -43,6 +45,8 @@ export default function ProgrammesPage() {
     {
       category: 'Leadership Development',
       description: 'Develop the skills and mindset of effective leaders',
+      href: '/leadership',
+      cta: 'Explore Leadership',
       items: [
         {
           icon: <TrendingUp size={24} />,
@@ -67,6 +71,8 @@ export default function ProgrammesPage() {
     {
       category: 'Entrepreneurship',
       description: 'Transform your ideas into successful businesses',
+      href: '/entrepreneurship',
+      cta: 'Explore Entrepreneurship',
       items: [
         {
           icon: <Lightbulb size={24} />,
@@ -91,6 +97,8 @@ export default function ProgrammesPage() {
     {
       category: 'Mentorship',
       description: 'Learn from experienced professionals and peers',
+      href: '/mentorship',
+      cta: 'Explore Mentorship',
       items: [
         {
           icon: <Users size={24} />,
@@ -172,9 +180,17 @@ export default function ProgrammesPage() {
                 icon={item.icon}
                 title={item.title}
                 description={item.description}
-                href={`/${category.category.toLowerCase().replace(/\s+/g, '-')}`}
               />
             ))}
+          </div>
+
+          {/* One destination per category — the cards above describe what is
+              inside it, so they no longer each carry their own link. */}
+          <div className="mt-10">
+            <Button variant="primary" href={category.href}>
+              {category.cta}
+              <span aria-hidden="true">→</span>
+            </Button>
           </div>
         </Section>
       ))}

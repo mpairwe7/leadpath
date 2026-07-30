@@ -51,11 +51,11 @@ export function Footer() {
             <div className="space-y-3 text-sm">
               <div className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
                 <Mail size={16} className="text-lime" />
-                <a href="mailto:info@leadpath.org">info@leadpath.org</a>
+                <a href="mailto:leadpath360@gmail.com">leadpath360@gmail.com</a>
               </div>
               <div className="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
                 <MessageCircle size={16} className="text-lime" />
-                <a href="https://wa.me/256700000000">+256 700 000 000</a>
+                <a href="https://wa.me/256757223581">+256 757 223 581</a>
               </div>
               <div className="flex items-center gap-2 text-white/80">
                 <MapPin size={16} className="text-lime" />
@@ -89,22 +89,18 @@ export function Footer() {
         {/* Divider */}
         <div className="border-t border-white/10 my-4"></div>
 
-        {/* Bottom Footer */}
-        <div className="py-8 flex flex-col sm:flex-row justify-between items-center gap-6">
+        {/* Bottom Footer — the photo credits link is an attribution
+            requirement of the open licences the site photography carries. */}
+        <div className="py-8 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-sm text-white/70">
             © {currentYear} LeadPath. All rights reserved.
           </p>
-          <div className="flex gap-6 text-sm text-white/70">
-            <Link href="#" className="hover:text-white transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="hover:text-white transition-colors">
-              Terms of Service
-            </Link>
-            <Link href="#" className="hover:text-white transition-colors">
-              Code of Conduct
-            </Link>
-          </div>
+          <Link
+            href="/credits"
+            className="text-sm text-white/70 hover:text-white transition-colors"
+          >
+            Photo credits
+          </Link>
         </div>
       </div>
     </footer>

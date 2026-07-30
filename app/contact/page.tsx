@@ -30,11 +30,11 @@ export default function ContactPage() {
             </div>
             <div className="relative min-h-[220px]">
               <Image
-                src="/african-team-member-2.png"
-                alt="A LeadPath team member ready to help"
+                src="/uganda-student-portrait.jpg"
+                alt="A young woman listening during a training session in Kampala, Uganda"
                 fill
                 sizes="(max-width: 1024px) 100vw, 640px"
-                className="object-cover"
+                className="object-cover object-[center_30%]"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/30 to-transparent" />
             </div>
@@ -53,8 +53,8 @@ export default function ContactPage() {
             <p className="text-muted-foreground text-sm mb-3">
               Reach out to us via email for detailed inquiries
             </p>
-            <a href="mailto:info@leadpath.org" className="text-accent-ink font-semibold hover:text-accent-ink/80 transition-colors">
-              info@leadpath.org
+            <a href="mailto:leadpath360@gmail.com" className="text-accent-ink font-semibold hover:text-accent-ink/80 transition-colors">
+              leadpath360@gmail.com
             </a>
           </Card>
 
@@ -66,8 +66,8 @@ export default function ContactPage() {
             <p className="text-muted-foreground text-sm mb-3">
               Call us during business hours
             </p>
-            <a href="tel:+256700000000" className="text-accent-ink font-semibold hover:text-accent-ink/80 transition-colors">
-              +256 700 000 000
+            <a href="tel:+256757223581" className="text-accent-ink font-semibold hover:text-accent-ink/80 transition-colors">
+              +256 757 223 581
             </a>
           </Card>
 
@@ -79,7 +79,7 @@ export default function ContactPage() {
             <p className="text-muted-foreground text-sm mb-3">
               Quick chat on WhatsApp
             </p>
-            <a href="https://wa.me/256700000000" className="text-accent-ink font-semibold hover:text-accent-ink/80 transition-colors">
+            <a href="https://wa.me/256757223581" className="text-accent-ink font-semibold hover:text-accent-ink/80 transition-colors">
               Message us
             </a>
           </Card>

@@ -63,12 +63,12 @@ export default function Page() {
         <div className="max-w-7xl mx-auto">
           <div className="relative overflow-hidden rounded-3xl bg-navy">
             <Image
-              src="/african-team-collaboration.png"
-              alt="LeadPath members collaborating"
+              src="/uganda-youth-training.jpg"
+              alt="Young people in a skills training session at a youth centre in Kampala, Uganda"
               fill
               priority
               sizes="(max-width: 1280px) 100vw, 1280px"
-              className="object-cover opacity-40"
+              className="object-cover object-[center_25%] opacity-40"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/40" />
             <div
