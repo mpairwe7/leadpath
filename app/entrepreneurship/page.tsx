@@ -3,7 +3,14 @@
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { Section, Heading, Card, Button } from '@/components/ui-components'
-import { CheckCircle2 } from 'lucide-react'
+import {
+  CheckCircle2,
+  Compass,
+  RefreshCw,
+  ShieldCheck,
+  Sparkles,
+  Target,
+} from 'lucide-react'
 
 export default function EntrepreneurshipPage() {
   const support = [
@@ -24,22 +31,27 @@ export default function EntrepreneurshipPage() {
 
   const qualities = [
     {
+      icon: <ShieldCheck size={24} />,
       title: 'Resilience',
       description: 'Staying with the problem long after the first plan fails.',
     },
     {
+      icon: <Sparkles size={24} />,
       title: 'Creativity',
       description: 'Seeing an opportunity where others see an obstacle.',
     },
     {
+      icon: <RefreshCw size={24} />,
       title: 'Adaptability',
       description: 'Changing the approach when the market says something new.',
     },
     {
+      icon: <Target size={24} />,
       title: 'Discipline',
       description: 'Doing the unglamorous work that compounds over time.',
     },
     {
+      icon: <Compass size={24} />,
       title: 'Strategic Thinking',
       description: 'Choosing deliberately what to build, and what to leave.',
     },
@@ -120,8 +132,10 @@ export default function EntrepreneurshipPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {qualities.map((quality) => (
-            <Card key={quality.title} variant="elevated">
-              <div className="mb-4 w-10 h-1.5 rounded-full bg-lime" />
+            <Card key={quality.title} variant="elevated" className="group">
+              <div className="mb-4 p-3 w-fit rounded-2xl bg-lime/15 text-success-ink group-hover:bg-lime group-hover:text-navy-950 transition-colors">
+                {quality.icon}
+              </div>
               <h3 className="font-serif font-bold text-xl text-primary mb-2">
                 {quality.title}
               </h3>

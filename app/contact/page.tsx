@@ -5,7 +5,14 @@ import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { ContactForm } from '@/components/contact-form'
 import { Section, Heading, Card } from '@/components/ui-components'
-import { Mail, MessageCircle, MapPin, Phone, Clock } from 'lucide-react'
+import { ArrowRight, Mail, MessageCircle, MapPin, Phone, Clock } from 'lucide-react'
+
+const QUICK_LINKS = [
+  { href: '/get-involved', label: 'Get Involved' },
+  { href: '/programmes', label: 'Our Programmes' },
+  { href: '/partners', label: 'Partnerships' },
+  { href: '/donate', label: 'Donate' },
+]
 
 export default function ContactPage() {
   return (
@@ -138,26 +145,21 @@ export default function ContactPage() {
                 Quick Links
               </h3>
               <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="/get-involved" className="text-accent-ink hover:text-accent-ink/80 transition-colors">
-                    Get Involved →
-                  </a>
-                </li>
-                <li>
-                  <a href="/programmes" className="text-accent-ink hover:text-accent-ink/80 transition-colors">
-                    Our Programmes →
-                  </a>
-                </li>
-                <li>
-                  <a href="/partners" className="text-accent-ink hover:text-accent-ink/80 transition-colors">
-                    Partnerships →
-                  </a>
-                </li>
-                <li>
-                  <a href="/donate" className="text-accent-ink hover:text-accent-ink/80 transition-colors">
-                    Donate →
-                  </a>
-                </li>
+                {QUICK_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className="group inline-flex items-center gap-1.5 text-accent-ink hover:text-accent-ink/80 transition-colors"
+                    >
+                      {link.label}
+                      <ArrowRight
+                        size={14}
+                        aria-hidden="true"
+                        className="transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none"
+                      />
+                    </a>
+                  </li>
+                ))}
               </ul>
             </Card>
           </div>

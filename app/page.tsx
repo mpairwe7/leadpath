@@ -171,7 +171,7 @@ export default function Page() {
                 className="inline-flex items-center gap-2 text-accent-ink font-serif font-bold hover:gap-3 transition-all"
               >
                 Learn More
-                <span aria-hidden="true">→</span>
+                <ArrowRight size={16} aria-hidden="true" />
               </Link>
             </Card>
           ))}

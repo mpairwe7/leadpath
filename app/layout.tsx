@@ -67,7 +67,12 @@ export const viewport: Viewport = {
   userScalable: true,
 }
 
-const themeInit = `(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;var c=document.documentElement.classList;c.toggle('dark',d);c.toggle('light',!d);}catch(e){}})()`
+// Runs before first paint to prevent a flash of the wrong theme. Mirrors
+// applyTheme() in components/theme-switcher.tsx: 'system' (and any unset or
+// unrecognised value) resolves against the OS preference, and the resolved
+// result is always written as an explicit class because the Tailwind `dark:`
+// variant keys off `.dark` rather than the media query.
+const themeInit = `(function(){try{var t=localStorage.getItem('theme');var d=t==='dark'?true:t==='light'?false:window.matchMedia('(prefers-color-scheme: dark)').matches;var c=document.documentElement.classList;c.toggle('dark',d);c.toggle('light',!d);}catch(e){}})()`
 
 export default function RootLayout({
   children,

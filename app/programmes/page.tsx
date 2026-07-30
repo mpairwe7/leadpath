@@ -4,6 +4,7 @@ import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { Section, Heading, Card, Button, ProgramCard } from '@/components/ui-components'
 import {
+  ArrowRight,
   Briefcase,
   TrendingUp,
   Lightbulb,
@@ -12,6 +13,7 @@ import {
   Target,
   BookOpen,
   Zap,
+  Check,
 } from 'lucide-react'
 
 export default function ProgrammesPage() {
@@ -189,7 +191,7 @@ export default function ProgrammesPage() {
           <div className="mt-10">
             <Button variant="primary" href={category.href}>
               {category.cta}
-              <span aria-hidden="true">→</span>
+              <ArrowRight size={18} aria-hidden="true" />
             </Button>
           </div>
         </Section>
@@ -217,8 +219,8 @@ export default function ProgrammesPage() {
                     {item.step}
                   </div>
                   {idx < 3 && (
-                    <div className="hidden md:block absolute -right-4 top-6 text-accent-ink text-2xl">
-                      →
+                    <div className="hidden md:block absolute -right-4 top-6 text-accent-ink">
+                      <ArrowRight size={24} aria-hidden="true" />
                     </div>
                   )}
                 </div>
@@ -253,7 +255,12 @@ export default function ProgrammesPage() {
           ].map((feature, idx) => (
             <Card key={idx} variant="elevated">
               <div className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></div>
+                <Check
+                  size={18}
+                  strokeWidth={3}
+                  className="text-accent-ink mt-0.5 flex-shrink-0"
+                  aria-hidden="true"
+                />
                 <p className="font-medium text-primary dark:text-foreground">{feature}</p>
               </div>
             </Card>
@@ -320,7 +327,12 @@ export default function ProgrammesPage() {
               <ul className="space-y-2 mb-6">
                 {tier.features.map((feature, fidx) => (
                   <li key={fidx} className="flex items-center gap-2 text-sm text-primary dark:text-foreground">
-                    <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    <Check
+                      size={14}
+                      strokeWidth={3}
+                      className="text-success-ink flex-shrink-0"
+                      aria-hidden="true"
+                    />
                     {feature}
                   </li>
                 ))}

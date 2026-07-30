@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import { ArrowRight, Check } from 'lucide-react'
 
 interface SectionProps {
   id?: string
@@ -257,7 +258,12 @@ export function ProgramCard({
         <ul className="space-y-2 mb-6 text-sm">
           {features.map((feature, idx) => (
             <li key={idx} className="flex items-center gap-2 text-foreground">
-              <span className="w-1.5 h-1.5 rounded-full bg-success-ink flex-shrink-0"></span>
+              <Check
+                size={14}
+                strokeWidth={3}
+                className="text-success-ink flex-shrink-0"
+                aria-hidden="true"
+              />
               {feature}
             </li>
           ))}
@@ -269,7 +275,7 @@ export function ProgramCard({
           className="mt-auto inline-flex items-center gap-2 text-accent-ink font-serif font-bold hover:gap-3 transition-all"
         >
           Learn More
-          <span aria-hidden="true">→</span>
+          <ArrowRight size={16} aria-hidden="true" />
         </a>
       )}
     </Card>
