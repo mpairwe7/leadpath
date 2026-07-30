@@ -225,6 +225,109 @@ the scope of this fix).
 
 ---
 
+---
+
+## 6. Deploy-blocking regression introduced and fixed
+
+**Commits:** [`ad9179c`](https://github.com/mpairwe7/leadpath/commit/ad9179c)
+(introduced) → [`4cffa1b`](https://github.com/mpairwe7/leadpath/commit/4cffa1b) (fixed)
+
+`ad9179c` patched a Dependabot alert by adding a `brace-expansion` override
+to `pnpm-workspace.yaml` **only**. That silently broke every subsequent
+deployment:
+
+```
+ERR_PNPM_LOCKFILE_CONFIG_MISMATCH
+  Cannot proceed with the frozen installation. The current "overrides"
+  configuration doesn't match the value found in the lockfile
+```
+
+pnpm 11 (local) reads settings from `pnpm-workspace.yaml` and ignores the
+`pnpm` field in `package.json`. Vercel's builder selects **pnpm 10** for this
+project, which does the opposite. The lockfile recorded the six overrides
+pnpm 11 saw; pnpm 10 computed the five in `package.json`; a frozen install
+refuses to proceed on that disagreement.
+
+Consequence worth noting for audit: `ad9179c` was committed and pushed but
+**never deployed**, and the failure was not discovered until the next deploy
+was attempted. The security patch was not live during that window.
+
+Fixed by carrying the same six overrides in both files. `pnpm-workspace.yaml`
+now documents the keep-in-sync requirement inline, at the point where the next
+override will be added.
+
+---
+
+## 7. Icon system and theme switcher
+
+**Commit:** [`fdd12e6`](https://github.com/mpairwe7/leadpath/commit/fdd12e6) —
+`feat(ui): replace glyph icons with lucide and add a tri-state theme switcher`
+
+No emoji existed in the source. What stood in for icons were text characters
+and bare CSS shapes: eight `U+2192` arrows as "Learn More" / step affordances,
+and three `rounded-full` div/span bullets as list marks. Both were replaced
+with `lucide-react` icons (`ArrowRight`, `Check`) — already a dependency and
+already the library used by all 17 icon-importing modules, so no new icon
+dependency was added. The entrepreneurship qualities grid, the only card grid
+lacking icons, gained `ShieldCheck`/`Sparkles`/`RefreshCw`/`Target`/`Compass`
+in the same treatment the other grids use. Every icon is `aria-hidden`, with
+adjacent text carrying meaning.
+
+The theme switcher went from a two-state toggle (no way back to following the
+OS) to a three-state **Light / Dark / System** segmented control:
+
+- System is a real, selectable state, and the OS is tracked live via a
+  `matchMedia` listener.
+- The resolved theme is always written as an explicit `.dark`/`.light` class.
+  The Tailwind variant is `@custom-variant dark (&:is(.dark *))`, so relying on
+  the `prefers-color-scheme` media query alone would swap the CSS custom
+  properties while leaving every `dark:` utility inert.
+- The pre-paint script in `app/layout.tsx` performs the same tri-state
+  resolution, so it stays flash-free and cannot diverge from the component.
+  Previously stored `light`/`dark` values remain honoured.
+- WAI-ARIA `radiogroup` semantics, roving tabindex, arrow-key selection; the
+  group is one tab stop.
+- Renders at final size from first paint instead of returning `null` until
+  mounted, so the navbar no longer shifts during hydration.
+
+Verified by extracting the shipped pre-paint script from `layout.tsx` and
+running it against a fake DOM for all 10 combinations of stored preference ×
+OS preference; the script and the component's `applyTheme` agreed on all 10.
+
+---
+
+## 8. End-to-end regression verification
+
+A 204-check exploratory suite was run against
+`https://leadpath-website-build.vercel.app` — **204/204 passed**. Coverage:
+
+| # | Area | Checks |
+|---|---|---|
+| 1 | Route availability (12 pages + intentional 404s) | 16 |
+| 2 | Link integrity — every internal link, zero `href="#"`, no links to the old 404 routes | 10 |
+| 3 | Imagery — all 56 image URLs, assets byte-identical to committed files, retired AI images unreferenced | 23 |
+| 4 | Contact details on every page, zero stale placeholders | 32 |
+| 5 | Footer — removed legal links absent, credits link present | 4 |
+| 6 | Attribution — 6 Commons originals + 3 licence deeds all resolve | 10 |
+| 7 | Contact form — valid send plus 8 rejection paths, honeypot, malformed JSON | 10 |
+| 8 | Donation flows — graceful degradation unconfigured, 8 validation paths | 13 |
+| 9 | Meta & structure — title and single `<h1>` per page | 26 |
+| 10 | Cross-page nav/footer consistency | 26 |
+| 11 | Icons & theme switcher — no glyphs, lucide SVGs present, radiogroup a11y | 34 |
+
+Two caveats on the method, for anyone repeating it:
+
+- The first run reported 6 failures that were **harness bugs, not site
+  defects** — a regex scraping Next.js's RSC flight payload (double-counting
+  links and capturing an escaped trailing backslash), and binary JPEG bodies
+  breaking a UTF-8 decode under concurrency. Both were verified false with
+  `curl` before the harness was corrected. Parse anchors from the DOM, not
+  regex over the raw body.
+- The suite sends one real email per run through the live contact form. Set
+  `SKIP_REAL_SEND=1` to suppress it and avoid filling the client's inbox.
+
+---
+
 ## Outstanding items
 
 - **Gmail app password**: in active use as the production credential
