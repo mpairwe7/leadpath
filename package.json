@@ -39,7 +39,8 @@
       "@hono/node-server": "^2.0.11",
       "postcss": "^8.5.22",
       "sharp": "^0.35.3",
-      "fast-uri": "^3.1.4"
+      "fast-uri": "^3.1.4",
+      "brace-expansion": "^5.0.8"
     },
     "onlyBuiltDependencies": [
       "sharp"

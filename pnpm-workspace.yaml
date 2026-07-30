@@ -1,3 +1,11 @@
+# KEEP `overrides` IDENTICAL TO package.json -> pnpm.overrides.
+#
+# pnpm 11 reads settings from this file and ignores the `pnpm` field in
+# package.json; pnpm 10 — which is what Vercel's builder still selects for this
+# project — reads package.json and not this file. The lockfile records whichever
+# set the installing client saw, so if the two drift, a frozen install on the
+# other version dies with ERR_PNPM_LOCKFILE_CONFIG_MISMATCH and the deploy
+# fails at `pnpm install`. Add every override in both places.
 allowBuilds:
   sharp: true
 
