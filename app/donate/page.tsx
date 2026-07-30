@@ -2,8 +2,6 @@
 
 import { Suspense } from 'react'
 import Image from 'next/image'
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
 import { DonationForm } from '@/components/donation-form'
 import { DonationStatusNotice } from '@/components/donation-status-notice'
 import { Section, Heading, Card, Button } from '@/components/ui-components'
@@ -46,9 +44,7 @@ export default function DonatePage() {
   ]
 
   return (
-    <main className="min-h-screen bg-background">
-      <Navbar />
-
+    <>
       {/* Hero — split screen */}
       <div className="pt-24 md:pt-28 px-4 sm:px-6 lg:px-8" id="hero">
         <div className="max-w-7xl mx-auto">
@@ -281,8 +277,6 @@ export default function DonatePage() {
           Donate Now
         </Button>
       </Section>
-
-      <Footer />
-    </main>
+    </>
   )
 }

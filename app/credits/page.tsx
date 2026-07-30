@@ -1,6 +1,4 @@
 import type { Metadata } from 'next'
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
 import { Section, Heading } from '@/components/ui-components'
 
 export const metadata: Metadata = {
@@ -81,9 +79,7 @@ const photos = [
 
 export default function CreditsPage() {
   return (
-    <main className="min-h-screen bg-background">
-      <Navbar />
-
+    <>
       <Section bgColor="primary" className="pt-32 pb-16 md:pt-40 md:pb-20" id="hero">
         <div>
           <Heading level={1} className="text-white mb-6">
@@ -146,8 +142,6 @@ export default function CreditsPage() {
           are photographs of our own people.
         </p>
       </Section>
-
-      <Footer />
-    </main>
+    </>
   )
 }

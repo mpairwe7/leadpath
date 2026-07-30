@@ -2,8 +2,6 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
 import {
   Section,
   Heading,
@@ -55,9 +53,7 @@ const pillars = [
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-background">
-      <Navbar />
-
+    <>
       {/* Hero Section — contained, photographic, with floating proof */}
       <div className="pt-24 md:pt-28 px-4 sm:px-6 lg:px-8" id="hero">
         <div className="max-w-7xl mx-auto">
@@ -158,7 +154,7 @@ export default function Page() {
                 <div className="p-3.5 w-fit rounded-2xl bg-lime/15 text-success-ink group-hover:bg-lime group-hover:text-navy-950 transition-colors">
                   {pillar.icon}
                 </div>
-                <span className="font-serif font-extrabold text-accent-ink/70 tabular-nums">
+                <span className="font-serif font-extrabold text-accent-ink tabular-nums">
                   {pillar.number}
                 </span>
               </div>
@@ -309,8 +305,6 @@ export default function Page() {
           </div>
         </div>
       </Section>
-
-      <Footer />
-    </main>
+    </>
   )
 }

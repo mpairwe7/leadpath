@@ -1,11 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui-components'
 
 const FIELD_CLASSES =
-  'w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring bg-background text-foreground'
+  'w-full px-4 py-2.5 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring bg-background text-foreground'
 
 interface ContactFormProps {
   /** Tags the email subject so enquiries can be told apart by page. */
@@ -39,6 +39,13 @@ export function ContactForm({
     'idle',
   )
   const [error, setError] = useState('')
+  const successRef = useRef<HTMLDivElement>(null)
+
+  // Submitting swaps the form out for the confirmation, which would otherwise
+  // drop focus to <body> and leave a screen reader silent about the outcome.
+  useEffect(() => {
+    if (status === 'sent') successRef.current?.focus()
+  }, [status])
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -83,9 +90,15 @@ export function ContactForm({
 
   if (status === 'sent') {
     return (
-      <div className="text-center py-8">
+      <div
+        ref={successRef}
+        tabIndex={-1}
+        role="status"
+        aria-live="polite"
+        className="text-center py-8 focus:outline-none"
+      >
         <div className="w-16 h-16 rounded-full bg-lime/20 flex items-center justify-center mx-auto mb-4">
-          <CheckCircle2 size={32} className="text-success-ink" />
+          <CheckCircle2 size={32} className="text-success-ink" aria-hidden="true" />
         </div>
         <h3 className="font-serif font-bold text-2xl text-primary mb-2">
           {successTitle}
@@ -130,6 +143,7 @@ export function ContactForm({
             id={`${source}-name`}
             type="text"
             name="name"
+            autoComplete="name"
             value={formData.name}
             onChange={handleChange}
             required
@@ -150,6 +164,7 @@ export function ContactForm({
             id={`${source}-email`}
             type="email"
             name="email"
+            autoComplete="email"
             value={formData.email}
             onChange={handleChange}
             required
@@ -172,6 +187,7 @@ export function ContactForm({
             id={`${source}-organisation`}
             type="text"
             name="organisation"
+            autoComplete="organization"
             value={formData.organisation}
             onChange={handleChange}
             maxLength={160}

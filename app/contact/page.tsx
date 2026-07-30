@@ -1,8 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
 import { ContactForm } from '@/components/contact-form'
 import { Section, Heading, Card } from '@/components/ui-components'
 import { ArrowRight, Mail, MessageCircle, MapPin, Phone, Clock } from 'lucide-react'
@@ -16,9 +14,7 @@ const QUICK_LINKS = [
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-background">
-      <Navbar />
-
+    <>
       {/* Hero — split screen */}
       <div className="pt-24 md:pt-28 px-4 sm:px-6 lg:px-8" id="hero">
         <div className="max-w-7xl mx-auto">
@@ -51,6 +47,9 @@ export default function ContactPage() {
 
       {/* Contact Info Cards */}
       <Section id="contact-info" className="bg-white">
+        {/* The four cards below are self-evident visually but left the page
+            jumping h1 -> h3; this names the section for assistive tech. */}
+        <h2 className="sr-only">Ways to reach us</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           <Card variant="elevated">
             <div className="mb-4 p-3 w-fit rounded-lg bg-accent/10">
@@ -200,8 +199,6 @@ export default function ContactPage() {
           ))}
         </div>
       </Section>
-
-      <Footer />
-    </main>
+    </>
   )
 }

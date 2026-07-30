@@ -228,8 +228,11 @@ export function ProgramCard({
 }: ProgramCardProps) {
   return (
     <Card variant="elevated" className="group flex flex-col">
-      <div className="flex items-start justify-between gap-4 mb-4">
-        <div className="flex items-center gap-4">
+      <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+        {/* min-w-0 lets the title wrap instead of forcing the row wider than the
+            card -- with a shrink-0 status badge alongside it, the intrinsic
+            min-content width overflowed the viewport at 320px. */}
+        <div className="flex min-w-0 items-center gap-4">
           <div className="p-3 rounded-2xl bg-primary/5 text-primary dark:bg-primary/10 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
             {icon}
           </div>

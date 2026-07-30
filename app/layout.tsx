@@ -1,6 +1,8 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Archivo, Inter } from 'next/font/google'
+import { Navbar } from '@/components/navbar'
+import { Footer } from '@/components/footer'
 import './globals.css'
 
 const inter = Inter({
@@ -85,7 +87,22 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>
       <body className="antialiased bg-background text-foreground font-sans transition-colors">
-        {children}
+        {/* First tab stop on every page: lets keyboard and switch users skip the
+            navbar's dozen links. Visually hidden until focused. */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-lime focus:px-5 focus:py-3 focus:font-serif focus:font-bold focus:text-navy-950 focus:outline-none focus:ring-2 focus:ring-navy-950"
+        >
+          Skip to main content
+        </a>
+        <Navbar />
+        {/* Sole `main` landmark for the app. Nav and footer are siblings so the
+            footer keeps its implicit `contentinfo` role -- an HTML-AAM footer
+            only maps to contentinfo when it is not nested inside main. */}
+        <main id="main-content" tabIndex={-1} className="min-h-screen bg-background focus:outline-none">
+          {children}
+        </main>
+        <Footer />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

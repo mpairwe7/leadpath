@@ -1,7 +1,5 @@
 'use client'
 
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
 import { Section, Heading, Card, Button } from '@/components/ui-components'
 import {
   CheckCircle2,
@@ -58,9 +56,7 @@ export default function EntrepreneurshipPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-background">
-      <Navbar />
-
+    <>
       {/* Hero */}
       <Section bgColor="primary" className="pt-32 pb-16 md:pt-40 md:pb-20" id="hero">
         <div>
@@ -173,8 +169,6 @@ export default function EntrepreneurshipPage() {
           Start Building Today
         </Button>
       </Section>
-
-      <Footer />
-    </main>
+    </>
   )
 }

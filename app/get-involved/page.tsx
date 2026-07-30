@@ -1,9 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
 import { Section, Heading, Card, Button } from '@/components/ui-components'
 import { CheckCircle2, ArrowRight } from 'lucide-react'
 
@@ -20,6 +18,13 @@ export default function GetInvolvedPage() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [error, setError] = useState('')
   const submitted = status === 'sent'
+  const successRef = useRef<HTMLDivElement>(null)
+
+  // The confirmation replaces the form, so move focus to it and announce it --
+  // otherwise focus falls back to <body> with nothing spoken.
+  useEffect(() => {
+    if (submitted) successRef.current?.focus()
+  }, [submitted])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -72,9 +77,7 @@ export default function GetInvolvedPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-background">
-      <Navbar />
-
+    <>
       {/* Hero — split screen */}
       <div className="pt-24 md:pt-28 px-4 sm:px-6 lg:px-8" id="hero">
         <div className="max-w-7xl mx-auto">
@@ -177,9 +180,15 @@ export default function GetInvolvedPage() {
 
           <Card variant="elevated" className="p-8">
             {submitted ? (
-              <div className="text-center py-8">
+              <div
+                ref={successRef}
+                tabIndex={-1}
+                role="status"
+                aria-live="polite"
+                className="text-center py-8 focus:outline-none"
+              >
                 <div className="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle2 size={32} className="text-secondary" />
+                  <CheckCircle2 size={32} className="text-secondary" aria-hidden="true" />
                 </div>
                 <h3 className="font-serif font-bold text-2xl text-primary mb-2">
                   Thank You!
@@ -192,30 +201,34 @@ export default function GetInvolvedPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="involve-name" className="block text-sm font-medium text-foreground mb-2">
                       Full Name *
                     </label>
                     <input
+                      id="involve-name"
                       type="text"
                       name="name"
+                      autoComplete="name"
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
+                      className="w-full px-4 py-2.5 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
                       placeholder="Your name"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="involve-email" className="block text-sm font-medium text-foreground mb-2">
                       Email Address *
                     </label>
                     <input
+                      id="involve-email"
                       type="email"
                       name="email"
+                      autoComplete="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
+                      className="w-full px-4 py-2.5 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -223,28 +236,31 @@ export default function GetInvolvedPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="involve-phone" className="block text-sm font-medium text-foreground mb-2">
                       Phone Number
                     </label>
                     <input
+                      id="involve-phone"
                       type="tel"
                       name="phone"
+                      autoComplete="tel"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
+                      className="w-full px-4 py-2.5 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
                       placeholder="+256..."
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="involve-interest" className="block text-sm font-medium text-foreground mb-2">
                       How would you like to get involved? *
                     </label>
                     <select
+                      id="involve-interest"
                       name="interest"
                       value={formData.interest}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
+                      className="w-full px-4 py-2.5 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
                     >
                       <option value="career">Career Development</option>
                       <option value="leadership">Leadership Programme</option>
@@ -257,14 +273,15 @@ export default function GetInvolvedPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="involve-experience" className="block text-sm font-medium text-foreground mb-2">
                     Professional Experience
                   </label>
                   <select
+                    id="involve-experience"
                     name="experience"
                     value={formData.experience}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
+                    className="w-full px-4 py-2.5 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
                   >
                     <option value="">Select your experience level</option>
                     <option value="student">Student</option>
@@ -276,15 +293,16 @@ export default function GetInvolvedPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="involve-message" className="block text-sm font-medium text-foreground mb-2">
                     Tell us more about yourself (optional)
                   </label>
                   <textarea
+                    id="involve-message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground resize-none"
+                    className="w-full px-4 py-2.5 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground resize-none"
                     placeholder="Share your goals, interests, or any other relevant information..."
                   ></textarea>
                 </div>
@@ -322,8 +340,6 @@ export default function GetInvolvedPage() {
           Contact Us
         </Button>
       </Section>
-
-      <Footer />
-    </main>
+    </>
   )
 }

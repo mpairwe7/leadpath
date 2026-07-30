@@ -42,7 +42,9 @@ export function Footer() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="font-serif font-bold tracking-tight text-xl">LeadPath</h3>
+              {/* h2/h3 inside contentinfo: pages whose body stops at h1 were
+                  otherwise jumping straight to h3 here. */}
+              <h2 className="font-serif font-bold tracking-tight text-xl">LeadPath</h2>
             </Link>
             <p className="text-white/80 text-sm mb-6 max-w-sm leading-relaxed">
               Empowering careers. Inspiring leaders. Building the future through career development, leadership training, and entrepreneurship support.
@@ -67,9 +69,9 @@ export function Footer() {
           {/* Links Columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="font-serif font-bold text-lime mb-6 text-xs uppercase tracking-[0.14em]">
+              <h3 className="font-serif font-bold text-lime mb-6 text-xs uppercase tracking-[0.14em]">
                 {category}
-              </h4>
+              </h3>
               <ul className="space-y-3 text-sm">
                 {links.map((link) => (
                   <li key={`${category}-${link.href}-${link.label}`}>

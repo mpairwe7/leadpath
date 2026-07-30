@@ -14,7 +14,7 @@ import {
 } from '@/lib/donations'
 
 const FIELD_CLASSES =
-  'w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring bg-background text-foreground'
+  'w-full px-4 py-2.5 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring bg-background text-foreground'
 
 const PROVIDER_LABELS: Record<Provider, { name: string; detail: string }> = {
   flutterwave: {
@@ -254,6 +254,7 @@ export function DonationForm({ initialCampaignId }: DonationFormProps) {
             <input
               id="donor-name"
               type="text"
+              autoComplete="name"
               value={donor.name}
               onChange={(e) => setDonor({ ...donor, name: e.target.value })}
               required
@@ -272,6 +273,7 @@ export function DonationForm({ initialCampaignId }: DonationFormProps) {
             <input
               id="donor-email"
               type="email"
+              autoComplete="email"
               value={donor.email}
               onChange={(e) => setDonor({ ...donor, email: e.target.value })}
               required
@@ -294,6 +296,7 @@ export function DonationForm({ initialCampaignId }: DonationFormProps) {
           <input
             id="donor-phone"
             type="tel"
+            autoComplete="tel"
             value={donor.phone}
             onChange={(e) => setDonor({ ...donor, phone: e.target.value })}
             maxLength={40}

@@ -120,7 +120,7 @@ export function ThemeSwitcher() {
             tabIndex={selected || (!mounted && index === 0) ? 0 : -1}
             onClick={() => select(option.value)}
             onKeyDown={(event) => onKeyDown(event, index)}
-            className={`grid h-7 w-7 place-items-center rounded-full transition-colors motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+            className={`grid h-9 w-9 place-items-center rounded-full transition-colors motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
               selected
                 ? 'bg-background text-accent-ink shadow-sm'
                 : 'text-muted-foreground hover:text-foreground'

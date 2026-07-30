@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
 import { CheckCircle2 } from 'lucide-react'
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
 import { Section, Heading, Card, Button } from '@/components/ui-components'
 
 export const metadata: Metadata = {
@@ -19,9 +17,7 @@ export default async function ThankYouPage({
   const { ref } = await searchParams
 
   return (
-    <main className="min-h-screen bg-background">
-      <Navbar />
-
+    <>
       <Section className="pt-32 pb-16 md:pt-40 md:pb-24">
         <div className="max-w-2xl mx-auto text-center">
           <div className="w-20 h-20 rounded-full bg-lime/20 flex items-center justify-center mx-auto mb-6">
@@ -62,8 +58,6 @@ export default async function ThankYouPage({
           </div>
         </div>
       </Section>
-
-      <Footer />
-    </main>
+    </>
   )
 }

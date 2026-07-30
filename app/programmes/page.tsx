@@ -1,7 +1,5 @@
 'use client'
 
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
 import { Section, Heading, Card, Button, ProgramCard } from '@/components/ui-components'
 import {
   ArrowRight,
@@ -125,9 +123,7 @@ export default function ProgrammesPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-background">
-      <Navbar />
-
+    <>
       {/* Hero Section */}
       <Section
         bgColor="primary"
@@ -362,8 +358,6 @@ export default function ProgrammesPage() {
           Explore Programmes
         </Button>
       </Section>
-
-      <Footer />
-    </main>
+    </>
   )
 }

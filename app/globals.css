@@ -104,7 +104,9 @@
   --accent: #f0ad2f;
   --accent-foreground: #081226;
   --accent-ink: #8a6400;
-  --success-ink: #4d7c0f;
+  /* lime-800 rather than lime-700: at 700 the success badge (ink on a 10%
+     tint of itself) landed at 4.39:1, just under the 4.5:1 AA floor. */
+  --success-ink: #3f6212;
   --destructive: #b42331;
   --border: #e7e5df;
   --input: #f1f0ec;
@@ -198,6 +200,20 @@
     --sidebar-accent-foreground: #081226;
     --sidebar-border: #223258;
     --sidebar-ring: #f0ad2f;
+  }
+}
+
+/* Honour the OS "reduce motion" setting. Vestibular-disorder users get the
+   layout without the slide/fade/lift transitions; durations are near-zero
+   rather than zero so transitionend handlers still fire. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

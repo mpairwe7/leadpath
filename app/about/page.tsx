@@ -1,8 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
 import { Section, Heading, Card, Button } from '@/components/ui-components'
 import { CheckCircle2, Heart, Lightbulb, Mountain } from 'lucide-react'
 
@@ -62,9 +60,7 @@ export default function AboutPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-background">
-      <Navbar />
-
+    <>
       {/* Hero Section */}
       <Section
         bgColor="primary"
@@ -355,8 +351,6 @@ export default function AboutPage() {
           Get Started Now
         </Button>
       </Section>
-
-      <Footer />
-    </main>
+    </>
   )
 }

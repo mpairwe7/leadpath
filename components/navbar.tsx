@@ -25,6 +25,8 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [programmesOpen, setProgrammesOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const programmesButton = useRef<HTMLButtonElement>(null)
+  const menuButton = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     if (!programmesOpen) return
@@ -36,6 +38,25 @@ export function Navbar() {
     document.addEventListener('mousedown', close)
     return () => document.removeEventListener('mousedown', close)
   }, [programmesOpen])
+
+  // Escape dismisses whichever disclosure is open and returns focus to the
+  // control that opened it, per the WAI-ARIA disclosure pattern. Without this
+  // a keyboard user had no way to close either menu.
+  useEffect(() => {
+    if (!isOpen && !programmesOpen) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return
+      if (programmesOpen) {
+        setProgrammesOpen(false)
+        programmesButton.current?.focus()
+      } else if (isOpen) {
+        setIsOpen(false)
+        menuButton.current?.focus()
+      }
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [isOpen, programmesOpen])
 
   const linkClasses =
     'px-3 py-2 text-sm font-semibold text-foreground/80 hover:text-foreground rounded-full hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors'
@@ -70,8 +91,19 @@ export function Navbar() {
               About
             </Link>
 
-            <div className="relative" ref={dropdownRef}>
+            <div
+              className="relative"
+              ref={dropdownRef}
+              // Tabbing past the last item should dismiss the menu rather than
+              // leave it hanging open behind the rest of the page.
+              onBlur={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                  setProgrammesOpen(false)
+                }
+              }}
+            >
               <button
+                ref={programmesButton}
                 onClick={() => setProgrammesOpen(!programmesOpen)}
                 aria-expanded={programmesOpen}
                 aria-haspopup="true"
@@ -124,8 +156,9 @@ export function Navbar() {
           <div className="lg:hidden flex items-center gap-2">
             <ThemeSwitcher />
             <button
+              ref={menuButton}
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-foreground hover:bg-primary/5 dark:hover:bg-primary/10 rounded-full transition-colors"
+              className="p-2.5 text-foreground hover:bg-primary/5 dark:hover:bg-primary/10 rounded-full transition-colors"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
@@ -137,7 +170,11 @@ export function Navbar() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="lg:hidden border-t border-border bg-background animate-in fade-in slide-in-from-top-2">
+        /* Capped to the space below the 5rem bar and scrollable: the panel is
+           inside a `fixed` nav, so anything taller than the viewport could not
+           be reached by scrolling the page (phones in landscape lost the
+           Donate CTA entirely). `dvh` tracks collapsing mobile browser chrome. */
+        <div className="lg:hidden border-t border-border bg-background animate-in fade-in slide-in-from-top-2 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain">
           <div className="px-4 py-6 space-y-1">
             {topLinks.slice(0, 2).map((link) => (
               <Link

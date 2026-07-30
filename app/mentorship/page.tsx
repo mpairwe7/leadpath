@@ -1,7 +1,5 @@
 'use client'
 
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
 import { Section, Heading, Card, Button } from '@/components/ui-components'
 import { Users, Heart, TrendingUp, BookOpen, CheckCircle2, Award } from 'lucide-react'
 
@@ -53,9 +51,7 @@ export default function MentorshipPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-background">
-      <Navbar />
-
+    <>
       {/* Hero */}
       <Section bgColor="primary" className="pt-32 pb-16 md:pt-40 md:pb-20" id="hero">
         <div>
@@ -189,8 +185,6 @@ export default function MentorshipPage() {
           Become a Mentor
         </Button>
       </Section>
-
-      <Footer />
-    </main>
+    </>
   )
 }
